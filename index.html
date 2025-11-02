@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>معامل لايف بلس — الصفحة الرئيسية</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Styles Sheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="./assets/Life_Plus_lab_Logoo.png" alt="" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list" id="navList">
+            <li><a class="nav-link" href="#hero">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="#about">تعرف على المعمل</a>
+                <a href="#values">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="#services">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="#prep">تحضيرات التحاليل</a>
+                <a href="#results">نتائج التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="#personal">تحاليل شخصية</a>
+                <a href="#comprehensive">فحص شامل</a>
+                <a href="#maternity">برنامج أمومة</a>
+                <a href="#newborn">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="#branches">فروعنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01122772707">
+            <i class="fa-solid fa-phone"></i>
+            <span>01122772707</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="#hero">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="#about">تعرف على المعمل</a>
+              <a href="#values">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="#services">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="#prep">تحضيرات التحاليل</a>
+              <a href="#results">نتائج التحاليل</a>
+            </div>
+          </div>
+          <a href="#branches">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01122772707"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01122772707
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner wrap" data-reveal>
+        <div>
+          <h1 class="hero-title">
+            صحتك أولوية — نُقدّم نتائج يمكن الاعتماد عليها
+          </h1>
+          <p class="hero-sub">
+            تحاليل مخبرية دقيقة وسريعة بخبرة كبيرة وفريق متخصص، مع التزام
+            بالسرية والجودة
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#about">تعرف علينا</a>
+            <a class="btn ghost" href="#contact">تواصل معنا</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" data-reveal>
+          <div class="card-row">
+            <i class="fa-solid fa-vial"></i>
+            <div style="flex: 1; text-align: right">
+              <div class="card-title">تحاليل متقدمة</div>
+              <div class="card-sub">أجهزة حديثة ومختصون معتمدون</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <i class="fa-solid fa-user-check"></i>
+            <div style="flex: 1; text-align: right">
+              <div class="card-title">خدمة موثوقة</div>
+              <div class="card-sub">نتائج دقيقة وسرعة في التسليم</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about wrap" id="about" data-reveal>
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>لمحة عن معامل لايف بلس</h2>
+          <p>
+            من أكبر معامل القناة وسيناء؛ نقدم خدمات تشخيصية متقدمة تشمل الكيمياء
+            السريرية، أمراض الدم، المناعة والميكروبيولوجي، مع الالتزام بمعايير
+            الجودة والخصوصية.
+          </p>
+          <a class="link" href="#about">اقرأ المزيد ←</a>
+        </div>
+        <figure class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200"
+            alt="معمل حديث"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats wrap" id="stats">
+      <h3 class="section-title center" data-reveal>أرقامنا</h3>
+      <div class="stats-grid">
+        <article class="stat-card" data-reveal>
+          <div class="stat-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80"
+              alt=""
+            />
+          </div>
+          <div class="stat-content">
+            <div style="display: flex; align-items: center; gap: 10px">
+              <div class="stat-number">11</div>
+              <div style="flex: 1; text-align: right">
+                <div class="stat-title">سنوات خبرة</div>
+                <div class="stat-desc">
+                  أكثر من 11 سنة في مجال التحاليل الطبية
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="stat-card" data-reveal>
+          <div class="stat-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80"
+              alt=""
+            />
+          </div>
+          <div class="stat-content">
+            <div style="display: flex; align-items: center; gap: 10px">
+              <div class="stat-number">6</div>
+              <div style="flex: 1; text-align: right">
+                <div class="stat-title">فروع</div>
+                <div class="stat-desc">
+                  فروع موزعة على شمال سيناء والإسماعيلية
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="stat-card" data-reveal>
+          <div class="stat-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80"
+              alt=""
+            />
+          </div>
+          <div class="stat-content">
+            <div style="display: flex; align-items: center; gap: 10px">
+              <div class="stat-number">19</div>
+              <div style="flex: 1; text-align: right">
+                <div class="stat-title">شركات ومؤسسات</div>
+                <div class="stat-desc">نتشرف بخدمة أكثر من 19 شركة ومؤسسة</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="stat-card" data-reveal>
+          <div class="stat-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=400&q=80"
+              alt=""
+            />
+          </div>
+          <div class="stat-content">
+            <div style="display: flex; align-items: center; gap: 10px">
+              <div class="stat-number">800</div>
+              <div style="flex: 1; text-align: right">
+                <div class="stat-title">تحاليل</div>
+                <div class="stat-desc">أكثر من 800 تحليل داخل المعمل</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="stat-card" data-reveal>
+          <div class="stat-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=400&q=80"
+              alt=""
+            />
+          </div>
+          <div class="stat-content">
+            <div style="display: flex; align-items: center; gap: 10px">
+              <div class="stat-number">5000</div>
+              <div style="flex: 1; text-align: right">
+                <div class="stat-title">عملاء راضون</div>
+                <div class="stat-desc">نفتخر بخدمة آلاف العملاء</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="why wrap" id="why">
+      <h3 class="section-title center" data-reveal>لماذا معامل لايف بلس؟</h3>
+      <div class="why-grid">
+        <div class="why-card" data-reveal>
+          <div class="why-icon">
+            <i class="fa-solid fa-microscope"></i>
+          </div>
+          <div class="why-body">
+            <h3>معامل معتمدة</h3>
+            <p>نلتزم بأعلى معايير الجودة والاعتماد المختبري</p>
+          </div>
+        </div>
+
+        <div class="why-card" data-reveal>
+          <div class="why-icon">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <div class="why-body">
+            <h3>أخصائيون متميزون</h3>
+            <p>فريق من الأطباء والفنيين ذوي الخبرة والاحتراف</p>
+          </div>
+        </div>
+
+        <div class="why-card" data-reveal>
+          <div class="why-icon">
+            <i class="fa-solid fa-vial-circle-check"></i>
+          </div>
+          <div class="why-body">
+            <h3>دقة موثوقة</h3>
+            <p>مراجعات مزدوجة وإجراءات صارمة للنتائج</p>
+          </div>
+        </div>
+
+        <div class="why-card" data-reveal>
+          <div class="why-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="why-body">
+            <h3>خصوصية تامة</h3>
+            <p>سرية كاملة لبيانات المرضى ونتائجهم</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section class="programs wrap" id="programs" data-reveal>
+      <h3 class="section-title center">برامج الفحص</h3>
+      <div class="programs-grid">
+        <article class="program-card" data-reveal>
+          <img
+            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600"
+            alt="برنامج فحص شامل"
+          />
+          <div class="program-body">
+            <h4>برنامج الفحص الشامل</h4>
+            <p>
+              باقة تحاليل مختارة للاطمئنان على الجهاز الداخلي والكشف المبكر عن
+              الأمراض
+            </p>
+            <a class="link" href="#comprehensive">التفاصيل ←</a>
+          </div>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <img
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=600"
+            alt="فحص حديثي الولادة"
+          />
+          <div class="program-body">
+            <h4>فحص حديثي الولادة</h4>
+            <p>فحوصات مبكرة لرصد حالات وراثية أو طبية عند المواليد</p>
+            <a class="link" href="#newborn">التفاصيل ←</a>
+          </div>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <img
+            src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80&w=600"
+            alt="برنامج أمومة"
+          />
+          <div class="program-body">
+            <h4>برنامج أمومة</h4>
+            <p>متابعة الحمل وفحوصات ما بعد الولادة لصحة الأم والطفل</p>
+            <a class="link" href="#maternity">التفاصيل ←</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MESSAGE -->
+    <section class="message wrap" id="contact" data-reveal>
+      <h3 class="section-title">رضاؤكم هو أولويتنا</h3>
+      <p class="message-text">
+        نشكر عملاءنا على ثقتهم؛ تلك الثقة تحفزنا على رفع مستوى الخدمة باستمرار،
+        مع شكر خاص لفريق العمل المتميز
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div class="muted" style="margin-top: 4px; font-size: 13px">
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01122772707</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop Button -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="main.js"></script>
+  </body>
+</html>
