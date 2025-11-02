@@ -2,9 +2,9 @@
 :root {
   --font-main: "Alexandria", "Cairo", system-ui, -apple-system, "Segoe UI",
     Roboto, Arial, sans-serif;
-  --turq-900: #004e63;
-  --turq-700: #007fa4;
-  --turq-500: #00b2c9;
+  --turq-900: #312783;
+  --turq-700: #312783;
+  --turq-500: #e30613;
   --bg: #f6fbfb;
   --card-bg: rgba(255, 255, 255, 0.85);
   --muted: #55606a;
@@ -96,24 +96,34 @@ img {
 }
 .brand {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 .brand-logo {
-  width: 102px;
-  height: 50px;
+  width: 140px;
+  height: 80px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.brand-logo img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 .brand-name {
   font-weight: 900;
   color: var(--turq-700);
-  font-size: 17px;
+  font-size: 18px;
+  line-height: 1.2;
 }
 .brand-tag {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
+  line-height: 1.3;
+  margin-top: 2px;
 }
-
 /* Contact Info in Header */
 .header-contact {
   display: flex;
@@ -237,18 +247,29 @@ ul.nav-list {
 .burger {
   display: none;
   border: 0;
-  background: none;
-  padding: 8px;
+  background: rgba(0, 127, 164, 0.08);
+  padding: 0;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   align-items: center;
   justify-content: center;
   color: var(--turq-700);
-  font-size: 20px;
+  font-size: 22px;
+  transition: all var(--transition);
+  flex-shrink: 0;
 }
-
+.burger:hover {
+  background: rgba(0, 127, 164, 0.15);
+  transform: scale(1.05);
+}
+.burger:active {
+  transform: scale(0.95);
+}
+.burger i {
+  pointer-events: none;
+}
 .mobile-panel {
   display: none;
   position: fixed;
