@@ -307,7 +307,7 @@ ul.nav-list {
   padding: 100px 12px 40px; /* Added top padding for fixed header */
   background-image: linear-gradient(
       180deg,
-      rgba(0, 127, 164, 0.65),
+      rgb(49 39 131),
       rgba(0, 178, 201, 0.15)
     ),
     url("https://images.unsplash.com/photo-1602052577122-f73b9710adba?auto=format&fit=crop&q=80&w=1400");
@@ -389,6 +389,7 @@ ul.nav-list {
 }
 .hero-card .card-row {
   display: flex;
+  font-size: 27px;
   gap: 12px;
   align-items: center;
   padding: 10px 0;
@@ -558,6 +559,7 @@ ul.nav-list {
 }
 .why-icon {
   position: absolute;
+  font-size: 27px;
   left: 20px;
   top: 20px;
   width: 60px;
@@ -621,7 +623,7 @@ ul.nav-list {
   text-align: center;
 }
 .message-text {
-  color: var(--muted);
+  color: white;
   line-height: 1.7;
   max-width: 700px;
   margin: 12px auto 0;
@@ -715,7 +717,7 @@ ul.nav-list {
 }
 
 .muted {
-  color: var(--muted);
+  color: white;
 }
 .center {
   text-align: center;

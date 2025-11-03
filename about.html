@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>تعرف على معامل لايف بلس</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+
+<!-- styles -->
+ <link rel="stylesheet" href="styles.css">
+
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <style>    
+      /* ========== PAGE HEADER ========== */
+      .page-header {
+        min-height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        padding: 140px 12px 60px;
+        background-image: linear-gradient(
+            180deg,
+            rgba(0, 127, 164, 0.75),
+            rgba(0, 178, 201, 0.25)
+          ),
+          url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1400");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.3)
+        );
+        pointer-events: none;
+      }
+      .page-header-content {
+        position: relative;
+        z-index: 2;
+      }
+      .page-title {
+        font-size: 46px;
+        font-weight: 900;
+        line-height: 1.1;
+        text-shadow: 0 8px 24px rgba(2, 18, 20, 0.4);
+        margin: 0;
+      }
+      .breadcrumb {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .breadcrumb a {
+        transition: color var(--transition);
+      }
+      .breadcrumb a:hover {
+        color: white;
+      }
+
+      /* ========== INTRO SECTION ========== */
+      .intro-section {
+        padding: 70px 0;
+      }
+      .intro-content {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .intro-content h2 {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+      .intro-content p {
+        font-size: 16px;
+        line-height: 1.9;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+      .intro-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ========== TIMELINE ========== */
+      .timeline-section {
+        padding: 50px 0;
+        background: rgba(240, 252, 254, 0.4);
+      }
+      .section-title {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 50px;
+      }
+      .timeline-item:nth-child(even) .timeline-content {
+        order: 2;
+      }
+      .timeline-item:nth-child(even) .timeline-image {
+        order: 1;
+      }
+      .timeline-content {
+        background: var(--card-bg);
+        padding: 32px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+      }
+      .timeline-year {
+        display: inline-block;
+        background: linear-gradient(90deg, var(--turq-700), var(--turq-500));
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      .timeline-content h3 {
+        font-size: 24px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin: 0 0 12px 0;
+      }
+      .timeline-content p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin: 0;
+        font-size: 15px;
+      }
+      .timeline-image {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        height: 300px;
+      }
+      .timeline-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ========== VALUES GRID ========== */
+      .values-section {
+        padding: 70px 0;
+      }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+      .value-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 4px 16px rgba(6, 25, 30, 0.06);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+        transition: all var(--transition);
+        text-align: center;
+      }
+      .value-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(6, 25, 30, 0.12);
+      }
+      .value-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 32px;
+        box-shadow: 0 6px 20px rgba(0, 127, 164, 0.25);
+      }
+      .value-card h3 {
+        font-size: 20px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin: 0 0 12px 0;
+      }
+      .value-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0;
+        font-size: 14px;
+      }
+
+      /* ========== STATS HIGHLIGHT ========== */
+      .stats-highlight {
+        padding: 60px 0;
+        background: linear-gradient(135deg, var(--turq-700), var(--turq-500));
+        color: white;
+        text-align: center;
+      }
+      .stats-highlight h2 {
+        font-size: 32px;
+        font-weight: 900;
+        margin-bottom: 40px;
+      }
+      .stats-highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+      }
+      .stat-highlight-item {
+        text-align: center;
+      }
+      .stat-highlight-number {
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 8px;
+      }
+      .stat-highlight-label {
+        font-size: 16px;
+        opacity: 0.9;
+        font-weight: 600;
+      }
+
+      /* ========== FAMILY IMAGES ========== */
+      .family-section {
+        padding: 70px 0;
+      }
+      .family-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .family-card {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        height: 320px;
+        position: relative;
+        transition: all var(--transition);
+      }
+      .family-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(6, 25, 30, 0.15);
+      }
+      .family-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .family-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(0, 127, 164, 0.8)
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 24px;
+        color: white;
+      }
+      .family-overlay h4 {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 0;
+      }
+
+    
+      /* ========== REVEAL ========== */
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+      .revealed {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 1000px) {
+        ul.nav-list {
+          display: none;
+        }
+        .header-contact {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+        .brand-logo {
+          width: 70px;
+          height: 70px;
+        }
+        .brand-name {
+          font-size: 16px;
+        }
+        .brand-tag {
+          font-size: 11px;
+        }
+        .page-title {
+          font-size: 36px;
+        }
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+        .timeline-item:nth-child(even) .timeline-content,
+        .timeline-item:nth-child(even) .timeline-image {
+          order: initial;
+        }
+      }
+      @media (max-width: 640px) {
+        .brand-logo {
+          width: 60px;
+          height: 60px;
+          border-radius: 12px;
+        }
+        .brand-name {
+          font-size: 14px;
+        }
+        .brand-tag {
+          font-size: 10px;
+        }
+        .site-header .inner {
+          padding: 10px 0;
+        }
+        .brand {
+          gap: 10px;
+        }
+        .page-title {
+          font-size: 28px;
+        }
+        .intro-content h2,
+        .section-title {
+          font-size: 24px;
+        }
+        .stat-highlight-number {
+          font-size: 36px;
+        }
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+        <div class="brand-logo">
+          <img src="./assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس">
+        </div>
+        <div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list" id="navList">
+            <li><a class="nav-link" href="#hero">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="#values">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="#services">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="#prep">تحضيرات التحاليل</a>
+                <a href="#results">نتائج التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="#personal">تحاليل شخصية</a>
+                <a href="#comprehensive">فحص شامل</a>
+                <a href="#maternity">برنامج أمومة</a>
+                <a href="#newborn">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="#branches">فروعنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01122772707">
+            <i class="fa-solid fa-phone"></i>
+            <span>01122772707</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="#hero">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="#about">تعرف على المعمل</a>
+              <a href="#values">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="#services">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="#prep">تحضيرات التحاليل</a>
+              <a href="#results">نتائج التحاليل</a>
+            </div>
+          </div>
+          <a href="#branches">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01122772707"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01122772707
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="page-header-content" data-reveal>
+        <h1 class="page-title">تعرف على معامل لايف بلس</h1>
+        <div class="breadcrumb">
+          <a href="index.html">الرئيسية</a>
+          <span>•</span>
+          <span>تعرف على المعمل</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <section class="intro-section wrap">
+      <div class="intro-content" data-reveal>
+        <h2>رحلة التميز والريادة</h2>
+        <p>
+          تُعد معامل لايف بلس للتحاليل الطبية من أكبر المعامل بمحافظات القناة
+          وشمال سيناء، حيث نوفر خدمات تشخيصية متقدمة في مجالات علوم المناعة
+          وأمراض الدم والكيمياء السريرية والميكروبيولوجي والفيروسات والهرمونات
+          والبيولوجيا الجزيئية والوراثة الخلوية.
+        </p>
+        <p>
+          افتُتح المعمل في عام 2014، وكان من أهم توجهاتنا منذ التأسيس اكتساب
+          الريادة في مجال التحاليل الطبية، مع فهم عميق لاحتياجات المرضى
+          وتوقعاتهم، وهو ما دفعنا للتطوير المستمر في جميع المجالات.
+        </p>
+        <p>
+          نسعى دائماً لاختيار أفضل الكوادر البشرية المتميزة، لتقديم الرعاية
+          المناسبة والرد على استفسارات المرضى بكل احترافية ودقة، مما جعلنا من
+          أكثر المعامل ثقة لدى الأطباء وأهالي المحافظة.
+        </p>
+      </div>
+    </section>
+
+    <!-- VALUES SECTION -->
+    <section class="values-section wrap">
+      <h2 class="section-title" data-reveal>قيمنا الأساسية</h2>
+      <div class="values-grid">
+        <div class="value-card" data-reveal>
+          <div class="value-icon">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <h3>شعارنا</h3>
+          <p>الدقة والتميز في كل خطوة نقوم بها، من أجل صحة أفضل لمرضانا</p>
+        </div>
+
+        <div class="value-card" data-reveal>
+          <div class="value-icon">
+            <i class="fa-solid fa-crosshairs"></i>
+          </div>
+          <h3>هدفنا</h3>
+          <p>تقديم خدمات معملية موثوق بها ومناسبة في الوقت والتكاليف للمرضى</p>
+        </div>
+
+        <div class="value-card" data-reveal>
+          <div class="value-icon">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <h3>رؤيتنا</h3>
+          <p>الحفاظ على أعلى المعايير الدولية للخدمات المعملية وأدق النتائج</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section class="timeline-section">
+      <div class="wrap">
+        <h2 class="section-title" data-reveal>مسيرة النجاح</h2>
+
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-content">
+            <span class="timeline-year">2014</span>
+            <h3>البداية والتأسيس</h3>
+            <p>
+              انطلقنا بحلم كبير وإيمان راسخ بأهمية الدقة في التحاليل الطبية،
+              فافتتحنا أول فرع لنا بأحدث الأجهزة وأمهر الكوادر الطبية.
+            </p>
+          </div>
+          <div class="timeline-image">
+            <img
+              src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?auto=format&fit=crop&q=80&w=800"
+              alt="التأسيس"
+            />
+          </div>
+        </div>
+
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-content">
+            <span class="timeline-year">2017</span>
+            <h3>التوسع والنمو</h3>
+            <p>
+              بفضل ثقة عملائنا، تمكنا من افتتاح 3 فروع جديدة لتغطية احتياجات
+              المناطق المختلفة وتقديم خدماتنا لشريحة أوسع من المجتمع.
+            </p>
+          </div>
+          <div class="timeline-image">
+            <img
+              src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=800"
+              alt="التوسع"
+            />
+          </div>
+        </div>
+
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-content">
+            <span class="timeline-year">2020</span>
+            <h3>الاعتماد الدولي</h3>
+            <p>
+              حصلنا على شهادات الجودة والاعتماد الدولية، مما عزز مكانتنا كواحد
+              من أفضل المعامل في المنطقة.
+            </p>
+          </div>
+          <div class="timeline-image">
+            <img
+              src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&q=80&w=800"
+              alt="الاعتماد"
+            />
+          </div>
+        </div>
+
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-content">
+            <span class="timeline-year">2025</span>
+            <h3>الحاضر والمستقبل</h3>
+            <p>
+              اليوم، نفخر بخدمة آلاف المرضى عبر 6 فروع، ونتطلع لمزيد من التطور
+              والابتكار في خدماتنا لنبقى الخيار الأول لكل عائلة.
+            </p>
+          </div>
+          <div class="timeline-image">
+            <img
+              src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&q=80&w=800"
+              alt="المستقبل"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS HIGHLIGHT -->
+    <section class="stats-highlight">
+      <div class="wrap">
+        <h2 data-reveal>أرقام نفتخر بها</h2>
+        <div class="stats-highlight-grid">
+          <div class="stat-highlight-item" data-reveal>
+            <div class="stat-highlight-number">11</div>
+            <div class="stat-highlight-label">سنة من الخبرة</div>
+          </div>
+          <div class="stat-highlight-item" data-reveal>
+            <div class="stat-highlight-number">6</div>
+            <div class="stat-highlight-label">فروع في خدمتكم</div>
+          </div>
+          <div class="stat-highlight-item" data-reveal>
+            <div class="stat-highlight-number">800+</div>
+            <div class="stat-highlight-label">تحليل متوفر</div>
+          </div>
+          <div class="stat-highlight-item" data-reveal>
+            <div class="stat-highlight-number">5000+</div>
+            <div class="stat-highlight-label">عميل راضٍ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILY SECTION -->
+    <section class="family-section wrap">
+      <h2 class="section-title" data-reveal>صحة عائلتك.. أولويتنا</h2>
+      <div class="family-grid">
+        <div class="family-card" data-reveal>
+          <img
+            src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=800"
+            alt="أطفال سعداء"
+          />
+          <div class="family-overlay">
+            <h4>رعاية صحية للأطفال</h4>
+          </div>
+        </div>
+
+        <div class="family-card" data-reveal>
+          <img
+            src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?auto=format&fit=crop&q=80&w=800"
+            alt="عائلة مسلمة"
+          />
+          <div class="family-overlay">
+            <h4>عناية بكل أفراد الأسرة</h4>
+          </div>
+        </div>
+
+        <div class="family-card" data-reveal>
+          <img
+            src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=800"
+            alt="طفل يبتسم"
+          />
+          <div class="family-overlay">
+            <h4>نتائج دقيقة وسريعة</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div
+            class="muted"
+            style="margin-top: 4px; font-size: 13px; opacity: 0.9"
+          >
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01122772707</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop Button -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+      (function () {
+        const burger = document.getElementById("burger");
+        const mobilePanel = document.getElementById("mobilePanel");
+        const toTop = document.getElementById("toTop");
+        const pageLoader = document.getElementById("pageLoader");
+
+        // Hide loader
+        window.addEventListener("load", () => {
+          pageLoader.classList.add("hidden");
+          setTimeout(() => (pageLoader.style.display = "none"), 500);
+        });
+
+        // Burger toggle
+        let mobileOpen = false;
+        burger.addEventListener("click", () => {
+          mobileOpen = !mobileOpen;
+          if (mobileOpen) {
+            mobilePanel.style.display = "block";
+            burger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+          } else {
+            mobilePanel.style.display = "none";
+            burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+          }
+        });
+
+        // Desktop dropdowns
+        document
+          .querySelectorAll(".has-dropdown .drop-toggle")
+          .forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              const parent = btn.closest(".has-dropdown");
+              const opened = parent.classList.toggle("open");
+
+              document.querySelectorAll(".has-dropdown").forEach((other) => {
+                if (other !== parent) other.classList.remove("open");
+              });
+            });
+          });
+
+        // Mobile sub-toggles
+        document.querySelectorAll(".sub-toggle").forEach((s) => {
+          s.addEventListener("click", (e) => {
+            e.preventDefault();
+            const id = s.dataset.target;
+            const el = document.getElementById(id);
+            if (el) {
+              el.style.display =
+                el.style.display === "block" ? "none" : "block";
+            }
+          });
+        });
+
+        // Close dropdowns on outside click
+        document.addEventListener("click", (e) => {
+          if (
+            !e.target.closest(".has-dropdown") &&
+            !e.target.closest(".site-header")
+          ) {
+            document
+              .querySelectorAll(".has-dropdown.open")
+              .forEach((x) => x.classList.remove("open"));
+          }
+          if (
+            !e.target.closest(".mobile-panel") &&
+            !e.target.closest(".burger")
+          ) {
+            if (
+              window.innerWidth <= 1000 &&
+              mobilePanel.style.display === "block"
+            ) {
+              mobilePanel.style.display = "none";
+              burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+              mobileOpen = false;
+            }
+          }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", (e) => {
+            const href = anchor.getAttribute("href");
+            if (href !== "#" && document.querySelector(href)) {
+              e.preventDefault();
+              document
+                .querySelector(href)
+                .scrollIntoView({ behavior: "smooth" });
+
+              if (mobilePanel.style.display === "block") {
+                mobilePanel.style.display = "none";
+                burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                mobileOpen = false;
+              }
+            }
+          });
+        });
+
+        // toTop button
+        window.addEventListener("scroll", () => {
+          toTop.style.display = window.scrollY > 400 ? "block" : "none";
+        });
+        toTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Reveal animations
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document.querySelectorAll("[data-reveal]").forEach((el) => {
+          revealObserver.observe(el);
+        });
+
+        // Animate stat numbers
+        document.querySelectorAll(".stat-highlight-number").forEach((el) => {
+          const text = el.textContent;
+          const target = parseInt(text.replace(/\D/g, "")) || 0;
+          const hasPlus = text.includes("+");
+          let started = false;
+
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting && !started) {
+                  started = true;
+                  let current = 0;
+                  const increment = target / 60;
+                  const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                      el.textContent =
+                        target.toLocaleString("ar-EG") + (hasPlus ? "+" : "");
+                      clearInterval(timer);
+                    } else {
+                      el.textContent =
+                        Math.floor(current).toLocaleString("ar-EG");
+                    }
+                  }, 25);
+                  io.unobserve(el);
+                }
+              });
+            },
+            { threshold: 0.5 }
+          );
+
+          io.observe(el);
+        });
+      })();
+    </script>
+  </body>
+</html>
