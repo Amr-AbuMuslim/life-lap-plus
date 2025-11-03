@@ -267,9 +267,7 @@ ul.nav-list {
 .burger:active {
   transform: scale(0.95);
 }
-.burger i {
-  pointer-events: none;
-}
+
 .mobile-panel {
   display: none;
   position: fixed;
@@ -680,6 +678,9 @@ ul.nav-list {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1000px) {
+  .burger i {
+    pointer-events: none;
+  }
   .hero-inner {
     grid-template-columns: 1fr;
     text-align: center;
@@ -713,6 +714,9 @@ ul.nav-list {
   .stat-thumb {
     width: 56px;
     height: 56px;
+  }
+  .burger i {
+    pointer-events: none;
   }
 }
 

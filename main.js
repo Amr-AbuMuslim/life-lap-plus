@@ -37,7 +37,8 @@
   });
 
   // Mobile sub-toggles
-  document.querySelectorAll(".sub-toggle").forEach((s) => {
+  document.querySelector(".sub-toggle").forEach((s) => {
+    // selector not selectors to fix button
     s.addEventListener("click", (e) => {
       e.preventDefault();
       const id = s.dataset.target;
