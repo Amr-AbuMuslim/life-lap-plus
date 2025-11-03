@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>القيم الأساسية — معامل لايف بلس</title>
+    <link rel="icon" href="assets/ICON.png" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Additional styles for values page */
+      .page-header {
+        min-height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        padding: 140px 12px 60px;
+        background-image: linear-gradient(
+            180deg,
+            rgba(49 39 132),
+            rgba(0, 178, 201, 0.25)
+          ),
+          url("https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1400");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.3)
+        );
+        pointer-events: none;
+      }
+      .page-header-content {
+        position: relative;
+        z-index: 2;
+      }
+      .page-title {
+        font-size: 46px;
+        font-weight: 900;
+        line-height: 1.1;
+        text-shadow: 0 8px 24px rgba(2, 18, 20, 0.4);
+        margin: 0;
+      }
+      .breadcrumb {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .breadcrumb a {
+        transition: color var(--transition);
+      }
+      .breadcrumb a:hover {
+        color: white;
+      }
+
+      /* Values Grid */
+      .values-main {
+        padding: 70px 0;
+      }
+      .values-intro {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: center;
+      }
+      .values-intro h2 {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 16px;
+      }
+      .values-intro p {
+        font-size: 16px;
+        color: white;
+        line-height: 1.8;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+        margin-top: 40px;
+      }
+      .value-box {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 36px 28px;
+        box-shadow: 0 4px 16px rgba(6, 25, 30, 0.06);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+        transition: all var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .value-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--turq-700), var(--turq-500));
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform var(--transition);
+      }
+      .value-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(6, 25, 30, 0.12);
+      }
+      .value-box:hover::before {
+        transform: scaleX(1);
+      }
+      .value-icon-box {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 6px 20px rgba(0, 127, 164, 0.25);
+      }
+      .value-box h3 {
+        font-size: 22px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin: 0 0 12px 0;
+      }
+      .value-box p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin: 0;
+        font-size: 15px;
+      }
+      .value-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 16px 0 0 0;
+      }
+      .value-box ul li {
+        padding: 8px 0 8px 28px;
+        position: relative;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .value-box ul li::before {
+        content: "✓";
+        position: absolute;
+        right: -19px;
+        color: var(--turq-500);
+        font-weight: 900;
+        font-size: 16px;
+      }
+
+      /* Services We Provide */
+      .services-highlight {
+        padding: 60px 0;
+        background: rgba(240, 252, 254, 0.4);
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .service-card {
+        background: white;
+        border-radius: 14px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(6, 25, 30, 0.06);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+        transition: all var(--transition);
+      }
+      .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(6, 25, 30, 0.12);
+      }
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 24px;
+        margin: 0 auto 16px;
+      }
+      .service-card h4 {
+        font-size: 16px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin: 0;
+      }
+
+      /* Image Gallery */
+      .image-gallery {
+        padding: 70px 0;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .gallery-item {
+        border-radius: 16px;
+        overflow: hidden;
+        height: 280px;
+        position: relative;
+        box-shadow: var(--shadow);
+        transition: all var(--transition);
+      }
+      .gallery-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 16px 40px rgba(6, 25, 30, 0.15);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @media (max-width: 640px) {
+        .page-title {
+          font-size: 32px;
+        }
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link active">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="values.html">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="services.html">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="blood_2_f.html">فحص شامل</a>
+                <a href="prantent_2_f.html">برنامج أمومة</a>
+                <a href="baby_2_f.html">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01122772707">
+            <i class="fa-solid fa-phone"></i>
+            <span>01122772707</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="index.html">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="services.html">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
+            </div>
+          </div>
+          <a href="branches.html">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01122772707"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01122772707
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="page-header-content" data-reveal>
+        <h1 class="page-title">القيم الأساسية</h1>
+        <div class="breadcrumb">
+          <a href="index.html">الرئيسية</a>
+          <span>•</span>
+          <span>القيم الأساسية</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES INTRO -->
+    <section class="values-main wrap">
+      <div class="values-intro" data-reveal>
+        <h2>أهدافنا وقيمنا الأساسية</h2>
+        <p>
+          في معامل لايف بلس، نضع نصب أعيننا مجموعة من الأهداف والقيم الأساسية
+          للارتقاء بخدماتنا المعملية، موزعة على عدة محاور تمثل ركائز عملنا
+          اليومي
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <!-- Value 1 -->
+        <div class="value-box" data-reveal>
+          <div class="value-icon-box">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h3>العملاء أولاً</h3>
+          <p>
+            نركز بشكل رئيسي على وضع احتياجات ورغبات عملائنا وإرضائهم في مقدمة
+            أولوياتنا، ونسعى دائماً لتجاوز توقعاتهم من خلال تقديم خدمة متميزة
+          </p>
+        </div>
+
+        <!-- Value 2 -->
+        <div class="value-box" data-reveal>
+          <div class="value-icon-box">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </div>
+          <h3>الأخلاقيات المهنية</h3>
+          <p>
+            نسعى جاهدين لتحقيق أعلى المعايير الأخلاقية من صدق ونزاهة وأمانة في
+            جميع تعاملاتنا، مع الحفاظ التام على خصوصية المرضى
+          </p>
+        </div>
+
+        <!-- Value 3 -->
+        <div class="value-box" data-reveal>
+          <div class="value-icon-box">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h3>الجودة الفنية</h3>
+          <p>
+            هدفنا الرئيسي أن تكون الجودة الفنية جزءاً لا يتجزأ من مهمتنا
+            المعملية، لذلك نتبع أشد الأنظمة صرامة في مراقبة النتائج
+          </p>
+          <ul>
+            <li>تحليل كل عينة مرتين على الأقل لضمان دقة النتائج</li>
+            <li>أخذ العينات بأحدث الطرق المعايرة بدقة</li>
+            <li>استخدام النظام الرقمي لمنع الخطأ البشري</li>
+            <li>مراجعة بيانات المريض قبل وبعد التحليل</li>
+          </ul>
+        </div>
+
+        <!-- Value 4 -->
+        <div class="value-box" data-reveal>
+          <div class="value-icon-box">
+            <i class="fa-solid fa-gears"></i>
+          </div>
+          <h3>الكفاءة التشغيلية</h3>
+          <p>
+            نحرص دائماً على الكفاءة التشغيلية بالمتابعة المستمرة لأحدث الطرق
+            والتقنيات
+          </p>
+          <ul>
+            <li>اختيار أحدث الأجهزة المعتمدة المبرمجة آلياً</li>
+            <li>استخدام أفضل المحاليل والكواشف الطبية</li>
+            <li>تطبيق أحدث معايير الجودة الدولية</li>
+          </ul>
+        </div>
+
+        <!-- Value 5 -->
+        <div class="value-box" data-reveal>
+          <div class="value-icon-box">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <h3>فريق العمل المتميز</h3>
+          <p>
+            أطباؤنا وأخصائيونا وموظفونا يمتلكون قدرات هائلة من الابتكار والمهارة
+            والرغبة في تحقيق التميز، مع العمل كفريق واحد متكامل
+          </p>
+        </div>
+
+        <!-- Value 6 -->
+        <div class="value-box" data-reveal>
+          <div class="value-icon-box">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3>التعليم المستمر</h3>
+          <p>
+            ندعم العديد من البرامج المتميزة للتعليم والتدريب التي تهدف إلى تعزيز
+            المعرفة وتنمية المهارات لجميع أفراد فريقنا
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES HIGHLIGHT -->
+    <section class="services-highlight">
+      <div class="wrap">
+        <h2 class="section-title center" data-reveal>نوفر لك</h2>
+        <div class="services-grid">
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <h4>استلام أغلب النتائج في نفس اليوم</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-stethoscope"></i>
+            </div>
+            <h4>استشارات طبية معملية للطوارئ</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <h4>سجل طبي لجميع نتائج التحاليل</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-baby"></i>
+            </div>
+            <h4>تجهيزات خاصة للأطفال وحديثي الولادة</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-house-medical"></i>
+            </div>
+            <h4>خدمة أخذ العينات من المنازل</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h4>استلام النتائج عبر الإنترنت</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h4>بطاقات مخفضة للتحاليل المتكررة</h4>
+          </div>
+
+          <div class="service-card" data-reveal>
+            <div class="service-icon">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <h4>عمل مستمر 24 ساعة طوال الأسبوع</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE GALLERY -->
+    <section class="image-gallery wrap">
+      <h2 class="section-title center" data-reveal>بيئة عمل احترافية</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-reveal>
+          <img
+            src="https://pixabay.com/get/g22c2a4e8a6a941778238a615ea2439b20113887fc3ad937afdc27c2ff1335eb594ce1820e8f1e1624d27ab7322142f13_1280.jpg"
+            alt="معمل متقدم"
+          />
+        </div>
+        <div class="gallery-item" data-reveal>
+          <img
+            src="https://pixabay.com/get/g0e3993f22e9e10c4f59af2d7ff8e419c2a2e0b32d9984181044457cbc1aede5c6343e9e7c24e57fa41f2d68659bcf6166da0ccab850b886eedc706dc22dc871b_1280.jpg"
+            alt="أجهزة حديثة"
+          />
+        </div>
+        <div class="gallery-item" data-reveal>
+          <img
+            src="https://pixabay.com/get/g92df7051f9b2fd8d1546dd86c3b2f5a90559e80a4d89c7ae271394d4d0e48bb649c42f18dd84e405fefa27007d24c8d3_1280.jpg"
+            alt="فريق محترف"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div
+            class="muted"
+            style="margin-top: 4px; font-size: 13px; opacity: 0.9"
+          >
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01122772707</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop Button -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>تعرف على معامل لايف بلس</title>
+    <link rel="icon" href="assets/ICON.png" />
 
     <!-- Fonts -->
     <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
@@ -12,10 +13,8 @@
       rel="stylesheet"
     />
 
-
-<!-- styles -->
- <link rel="stylesheet" href="styles.css">
-
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
 
     <!-- Font Awesome CDN -->
     <link
@@ -32,7 +31,7 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <style>    
+    <style>
       /* ========== PAGE HEADER ========== */
       .page-header {
         min-height: 45vh;
@@ -44,7 +43,7 @@
         padding: 140px 12px 60px;
         background-image: linear-gradient(
             180deg,
-            rgba(0, 127, 164, 0.75),
+            rgba(49 39 132),
             rgba(0, 178, 201, 0.25)
           ),
           url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1400");
@@ -305,7 +304,46 @@
         margin: 0;
       }
 
-    
+      /* ========== FOOTER ========== */
+      .site-footer {
+        background: linear-gradient(90deg, var(--turq-700), var(--turq-500));
+        color: white;
+        padding: 28px 20px;
+        margin-top: 0;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        width: 92%;
+        max-width: 1200px;
+        margin-inline: auto;
+      }
+
+      /* ========== toTop ========== */
+      #toTop {
+        position: fixed;
+        left: 18px;
+        bottom: 18px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        z-index: 1500;
+        background: linear-gradient(135deg, var(--turq-700), var(--turq-500));
+        color: white;
+        border: 0;
+        display: none;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(0, 127, 164, 0.3);
+        font-size: 18px;
+        transition: all var(--transition);
+      }
+      #toTop:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(0, 127, 164, 0.4);
+      }
+
       /* ========== REVEAL ========== */
       [data-reveal] {
         opacity: 0;
@@ -380,7 +418,7 @@
       }
 
       .muted {
-        color: var(--muted);
+        color: white;
       }
     </style>
   </head>
@@ -392,14 +430,12 @@
     </div>
 
     <!-- HEADER -->
-    <!-- HEADER -->
     <header class="site-header">
       <div class="inner wrap">
         <div class="brand">
-        <div class="brand-logo">
-          <img src="./assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس">
-        </div>
-        <div>
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
           <div>
             <div class="brand-name">معامل لايف بلس</div>
             <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
@@ -407,8 +443,8 @@
         </div>
 
         <nav class="main-nav">
-          <ul class="nav-list" id="navList">
-            <li><a class="nav-link" href="#hero">الصفحة الرئيسية</a></li>
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
 
             <li class="has-dropdown">
               <button class="drop-toggle">
@@ -417,11 +453,11 @@
               </button>
               <div class="dropdown">
                 <a href="about.html">تعرف على المعمل</a>
-                <a href="#values">القيم الأساسية</a>
+                <a href="values.html">القيم الأساسية</a>
               </div>
             </li>
 
-            <li><a class="nav-link" href="#services">خدماتنا</a></li>
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
 
             <li class="has-dropdown">
               <button class="drop-toggle">
@@ -429,8 +465,8 @@
                 <span>▾</span>
               </button>
               <div class="dropdown">
-                <a href="#prep">تحضيرات التحاليل</a>
-                <a href="#results">نتائج التحاليل</a>
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
               </div>
             </li>
 
@@ -440,14 +476,14 @@
                 <span>▾</span>
               </button>
               <div class="dropdown">
-                <a href="#personal">تحاليل شخصية</a>
-                <a href="#comprehensive">فحص شامل</a>
-                <a href="#maternity">برنامج أمومة</a>
-                <a href="#newborn">فحص حديثي الولادة</a>
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="blood_2_f.html">فحص شامل</a>
+                <a href="prantent_2_f.html">برنامج أمومة</a>
+                <a href="baby_2_f.html">فحص حديثي الولادة</a>
               </div>
             </li>
 
-            <li><a class="nav-link" href="#branches">فروعنا</a></li>
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
           </ul>
         </nav>
 
@@ -467,23 +503,23 @@
         </button>
 
         <div class="mobile-panel" id="mobilePanel">
-          <a href="#hero">الصفحة الرئيسية</a>
+          <a href="index.html">الصفحة الرئيسية</a>
           <div>
             <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
             <div class="sub-links" id="m-about" style="display: none">
-              <a href="#about">تعرف على المعمل</a>
-              <a href="#values">القيم الأساسية</a>
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
             </div>
           </div>
-          <a href="#services">خدماتنا</a>
+          <a href="services.html">خدماتنا</a>
           <div>
             <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
             <div class="sub-links" id="m-tests" style="display: none">
-              <a href="#prep">تحضيرات التحاليل</a>
-              <a href="#results">نتائج التحاليل</a>
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
             </div>
           </div>
-          <a href="#branches">فروعنا</a>
+          <a href="branches.html">فروعنا</a>
           <div
             style="
               padding: 12px;
@@ -589,7 +625,7 @@
           </div>
           <div class="timeline-image">
             <img
-              src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?auto=format&fit=crop&q=80&w=800"
+              src="https://pixabay.com/get/g7e89949fd33e229260e9ae72f8f2632e181b230c306a37fc72b66e913564244240af26d6a9dbdd9b2cbecb5336205066_1280.jpg"
               alt="التأسيس"
             />
           </div>
@@ -606,7 +642,7 @@
           </div>
           <div class="timeline-image">
             <img
-              src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=800"
+              src="./assets/visualizing-growth-with-dynamic-bar-chart_1285516-18431.jpg"
               alt="التوسع"
             />
           </div>
@@ -679,7 +715,7 @@
       <div class="family-grid">
         <div class="family-card" data-reveal>
           <img
-            src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=800"
+            src="https://images.unsplash.com/photo-1614113036347-9f60df80730a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=897"
             alt="أطفال سعداء"
           />
           <div class="family-overlay">
@@ -689,7 +725,7 @@
 
         <div class="family-card" data-reveal>
           <img
-            src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?auto=format&fit=crop&q=80&w=800"
+            src="https://images.unsplash.com/photo-1590527548172-295fdcb1bab0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=388"
             alt="عائلة مسلمة"
           />
           <div class="family-overlay">

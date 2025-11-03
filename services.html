@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>خدماتنا — معامل لايف بلس</title>
+    <link rel="icon" href="assets/ICON.png" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Additional styles for services page */
+      .page-header {
+        min-height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        padding: 140px 12px 60px;
+        background-image: linear-gradient(
+            180deg,
+            rgba(49 39 132),
+            rgba(0, 178, 201, 0.25)
+          ),
+          url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1400");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.3)
+        );
+        pointer-events: none;
+      }
+      .page-header-content {
+        position: relative;
+        z-index: 2;
+      }
+      .page-title {
+        font-size: 46px;
+        font-weight: 900;
+        line-height: 1.1;
+        text-shadow: 0 8px 24px rgba(2, 18, 20, 0.4);
+        margin: 0;
+      }
+      .breadcrumb {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .breadcrumb a {
+        transition: color var(--transition);
+      }
+      .breadcrumb a:hover {
+        color: white;
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 70px 0;
+      }
+      .services-intro {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: center;
+      }
+      .services-intro h2 {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 16px;
+      }
+      .services-intro p {
+        font-size: 16px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .service-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 32px 24px;
+        box-shadow: 0 4px 16px rgba(6, 25, 30, 0.06);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+        transition: all var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--turq-700), var(--turq-500));
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform var(--transition);
+      }
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(6, 25, 30, 0.12);
+      }
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 28px;
+        box-shadow: 0 6px 20px rgba(0, 127, 164, 0.25);
+        flex-shrink: 0;
+      }
+
+      .service-content {
+        flex: 1;
+      }
+
+      .service-card h3 {
+        font-size: 20px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+      }
+
+      .service-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0;
+        font-size: 14px;
+      }
+
+      /* Featured Services */
+      .featured-services {
+        padding: 60px 0;
+        background: linear-gradient(135deg, var(--turq-700), var(--turq-500));
+        color: white;
+      }
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+        margin-top: 40px;
+      }
+      .featured-item {
+        text-align: center;
+      }
+      .featured-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 32px;
+        margin: 0 auto 20px;
+        transition: all var(--transition);
+      }
+      .featured-item:hover .featured-icon {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.1);
+      }
+      .featured-item h4 {
+        font-size: 18px;
+        font-weight: 900;
+        margin: 0 0 8px 0;
+      }
+      .featured-item p {
+        font-size: 14px;
+        opacity: 0.9;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 70px 0;
+        text-align: center;
+      }
+      .cta-box {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 50px 30px;
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: 0 8px 28px rgba(6, 25, 30, 0.08);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+      }
+      .cta-box h2 {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 16px;
+      }
+      .cta-box p {
+        font-size: 16px;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 24px;
+      }
+      .cta-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 640px) {
+        .page-title {
+          font-size: 32px;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="values.html">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="blood_2_f.html">فحص شامل</a>
+                <a href="prantent_2_f.html">برنامج أمومة</a>
+                <a href="baby_2_f.html">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01122772707">
+            <i class="fa-solid fa-phone"></i>
+            <span>01122772707</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="index.html">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="services.html">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
+            </div>
+          </div>
+          <a href="branches.html">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01122772707"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01122772707
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="page-header-content" data-reveal>
+        <h1 class="page-title">خدماتنا</h1>
+        <div class="breadcrumb">
+          <a href="index.html">الرئيسية</a>
+          <span>•</span>
+          <span>خدماتنا</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES INTRO -->
+    <section class="services-section wrap">
+      <div class="services-intro" data-reveal>
+        <h2>خدمات الأفراد</h2>
+        <p>
+          توفر معامل لايف بلس مجموعة شاملة ومتنوعة من التحاليل الطبية للأفراد،
+          مع التزام كامل بأعلى معايير الجودة والدقة
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <div class="service-content">
+            <h3>الكشف المبكر للأورام</h3>
+            <p>
+              فحوصات متقدمة للكشف المبكر عن الأورام باستخدام أحدث التقنيات وأدق
+              المعايير الطبية
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-microscope"></i>
+          </div>
+          <div class="service-content">
+            <h3>البيولوجيا الجزيئية PCR</h3>
+            <p>
+              تحاليل متقدمة باستخدام تقنية PCR للكشف الدقيق عن الأمراض الفيروسية
+              والوراثية
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-vial-circle-check"></i>
+          </div>
+          <div class="service-content">
+            <h3>تحاليل الفحص الشامل</h3>
+            <p>
+              باقة متكاملة من التحاليل للاطمئنان على الصحة العامة والكشف المبكر
+              عن الأمراض
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-baby-carriage"></i>
+          </div>
+          <div class="service-content">
+            <h3>برنامج أمومة لمتابعة الحمل</h3>
+            <p>متابعة شاملة للحمل بتحاليل دورية متخصصة لصحة الأم والجنين</p>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-baby"></i>
+          </div>
+          <div class="service-content">
+            <h3>تحاليل حديثي الولادة</h3>
+            <p>برنامج متخصص للكشف المبكر عن الأمراض الخطيرة قبل ظهور الأعراض</p>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-rings-wedding"></i>
+          </div>
+          <div class="service-content">
+            <h3>تحاليل ما قبل الزواج</h3>
+            <p>فحوصات شاملة للمقبلين على الزواج لضمان حياة زوجية صحية وسعيدة</p>
+          </div>
+        </div>
+
+        <!-- Service 7 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <div class="service-content">
+            <h3>متابعة مرضى السكر والكبد</h3>
+            <p>تحاليل دورية متخصصة لمتابعة حالة مرضى السكر والكبد بدقة عالية</p>
+          </div>
+        </div>
+
+        <!-- Service 8 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-virus"></i>
+          </div>
+          <div class="service-content">
+            <h3>دلالات فيروسات الكبد الوبائي</h3>
+            <p>فحوصات دقيقة للكشف عن فيروسات الكبد المختلفة ومتابعة العلاج</p>
+          </div>
+        </div>
+
+        <!-- Service 9 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-tint"></i>
+          </div>
+          <div class="service-content">
+            <h3>أبحاث سيولة الدم</h3>
+            <p>تحاليل متخصصة لقياس سيولة الدم ومتابعة حالات النزف والتجلط</p>
+          </div>
+        </div>
+
+        <!-- Service 10 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-dna"></i>
+          </div>
+          <div class="service-content">
+            <h3>أبحاث الخصوبة والإجهاض المتكرر</h3>
+            <p>فحوصات شاملة لمشاكل الخصوبة واضطرابات الدورة الشهرية</p>
+          </div>
+        </div>
+
+        <!-- Service 11 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-pills"></i>
+          </div>
+          <div class="service-content">
+            <h3>تحاليل الهرمونات والغدد الصماء</h3>
+            <p>قياس دقيق لمستويات الهرمونات المختلفة في الجسم</p>
+          </div>
+        </div>
+
+        <!-- Service 12 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-shield-virus"></i>
+          </div>
+          <div class="service-content">
+            <h3>أبحاث المناعة والروماتيزم</h3>
+            <p>تحاليل متقدمة لأمراض المناعة الذاتية والروماتيزم</p>
+          </div>
+        </div>
+
+        <!-- Service 13 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-lungs"></i>
+          </div>
+          <div class="service-content">
+            <h3>تشخيص الأنيميا وأسبابها</h3>
+            <p>فحوصات شاملة لتحديد نوع الأنيميا وأسبابها بدقة</p>
+          </div>
+        </div>
+
+        <!-- Service 14 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-syringe"></i>
+          </div>
+          <div class="service-content">
+            <h3>العقاقير العلاجية والمخدرات</h3>
+            <p>قياس مستويات الأدوية العلاجية والكشف عن المواد المخدرة</p>
+          </div>
+        </div>
+
+        <!-- Service 15 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-stomach"></i>
+          </div>
+          <div class="service-content">
+            <h3>مشاكل الجهاز الهضمي</h3>
+            <p>تحاليل متخصصة لتشخيص أمراض واضطرابات الجهاز الهضمي</p>
+          </div>
+        </div>
+
+        <!-- Service 16 -->
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <i class="fa-solid fa-heart-circle-check"></i>
+          </div>
+          <div class="service-content">
+            <h3>أمراض القلب وتصلب الشرايين</h3>
+            <p>فحوصات دقيقة لتقييم صحة القلب والأوعية الدموية</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED SERVICES -->
+    <section class="featured-services">
+      <div class="wrap">
+        <h2 class="section-title center" data-reveal style="color: white">
+          مميزات خدماتنا
+        </h2>
+        <div class="featured-grid">
+          <div class="featured-item" data-reveal>
+            <div class="featured-icon">
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+            <h4>دقة عالية</h4>
+            <p>نتائج موثوقة بأحدث الأجهزة والتقنيات</p>
+          </div>
+
+          <div class="featured-item" data-reveal>
+            <div class="featured-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <h4>سرعة في التسليم</h4>
+            <p>نتائج سريعة دون المساس بالجودة</p>
+          </div>
+
+          <div class="featured-item" data-reveal>
+            <div class="featured-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4>سرية تامة</h4>
+            <p>خصوصية كاملة لجميع بيانات المرضى</p>
+          </div>
+
+          <div class="featured-item" data-reveal>
+            <div class="featured-icon">
+              <i class="fa-solid fa-hand-holding-medical"></i>
+            </div>
+            <h4>خدمة متميزة</h4>
+            <p>فريق محترف لخدمتك على مدار الساعة</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section wrap">
+      <div class="cta-box" data-reveal>
+        <h2>هل تحتاج لمزيد من المعلومات؟</h2>
+        <p>
+          فريقنا الطبي جاهز للرد على جميع استفساراتكم وتقديم الاستشارات المعملية
+          المتخصصة
+        </p>
+        <div class="cta-buttons">
+          <a href="tel:01122772707" class="btn primary">
+            <i class="fa-solid fa-phone"></i> اتصل بنا الآن
+          </a>
+          <a
+            href="branches.html"
+            class="btn ghost"
+            style="color: var(--turq-700); border-color: var(--turq-700)"
+          >
+            <i class="fa-solid fa-location-dot"></i> تعرف على فروعنا
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div
+            class="muted"
+            style="margin-top: 4px; font-size: 13px; opacity: 0.9"
+          >
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01122772707</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop Button -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="main.js"></script>
+  </body>
+</html>
