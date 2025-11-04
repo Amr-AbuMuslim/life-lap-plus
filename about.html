@@ -46,7 +46,7 @@
             rgba(49 39 132),
             rgba(0, 178, 201, 0.25)
           ),
-          url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1400");
+          url("assets/laboratory-8895976_1280.png");
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -91,7 +91,7 @@
 
       /* ========== INTRO SECTION ========== */
       .intro-section {
-        padding: 70px 0;
+        padding: 700;
       }
       .intro-content {
         max-width: 900px;
@@ -477,20 +477,21 @@
               </button>
               <div class="dropdown">
                 <a href="personal-tests.html">تحاليل شخصية</a>
-                <a href="blood_2_f.html">فحص شامل</a>
-                <a href="prantent_2_f.html">برنامج أمومة</a>
-                <a href="baby_2_f.html">فحص حديثي الولادة</a>
+                <a href="full-check.html">فحص شامل</a>
+                <a href="motherhood.html">برنامج أمومة</a>
+                <a href="baby.html">فحص حديثي الولادة</a>
               </div>
             </li>
 
             <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+            <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
           </ul>
         </nav>
 
         <div class="header-contact">
-          <a href="tel:01122772707">
+          <a href="tel:01557771094">
             <i class="fa-solid fa-phone"></i>
-            <span>01122772707</span>
+            <span>01557771094</span>
           </a>
           <a href="mailto:info@lifepluslab.com">
             <i class="fa-solid fa-envelope"></i>
@@ -499,7 +500,7 @@
         </div>
 
         <button class="burger" id="burger">
-          <i class="fa-solid fa-bars"></i>
+          <i id="burger" class="fa-solid fa-bars"></i>
         </button>
 
         <div class="mobile-panel" id="mobilePanel">
@@ -519,6 +520,15 @@
               <a href="lists.html">قائمة التحاليل</a>
             </div>
           </div>
+          <div>
+            <a class="sub-toggle" data-target="m-checks">فحوصات ▾</a>
+            <div class="sub-links" id="m-checks" style="display: none">
+              <a href="personal-tests.html"> تحاليل شخصية</a>
+              <a href="full-check.html">فحص شامل</a>
+              <a href="parenet.html">برنامج أمومة</a>
+              <a href="baby.html">فحص حديثي الولادة</a>
+            </div>
+          </div>
           <a href="branches.html">فروعنا</a>
           <div
             style="
@@ -528,10 +538,10 @@
             "
           >
             <a
-              href="tel:01122772707"
+              href="tel:01557771094"
               style="color: var(--turq-700); font-size: 13px"
             >
-              <i class="fa-solid fa-phone"></i> 01122772707
+              <i class="fa-solid fa-phone"></i> 01557771094
             </a>
             <a
               href="mailto:info@lifepluslab.com"
@@ -561,9 +571,9 @@
       <div class="intro-content" data-reveal>
         <h2>رحلة التميز والريادة</h2>
         <p>
-          تُعد معامل لايف بلس للتحاليل الطبية من أكبر المعامل بمحافظات القناة
-          وشمال سيناء، حيث نوفر خدمات تشخيصية متقدمة في مجالات علوم المناعة
-          وأمراض الدم والكيمياء السريرية والميكروبيولوجي والفيروسات والهرمونات
+          تُعد معامل لايف بلس للتحاليل الطبية من أكبر المعامل بمحافظات القاهرة
+          والجيزة، حيث نوفر خدمات تشخيصية متقدمة في مجالات علوم المناعة وأمراض
+          الدم والكيمياء السريرية والميكروبيولوجي والفيروسات والهرمونات
           والبيولوجيا الجزيئية والوراثة الخلوية.
         </p>
         <p>
@@ -624,10 +634,7 @@
             </p>
           </div>
           <div class="timeline-image">
-            <img
-              src="https://pixabay.com/get/g14df64dbb81da65df59aeea8b58a2e8ee857b2dfa890dbea17f98ae6c73774d54cccbfb04140dad3b4fabf7b9e3a9a29274c19f5bc2ab1369458a298ff671273_1280.jpg"
-              alt="التأسيس"
-            />
+            <img src="assets/lab-devices.jpg" alt="التأسيس" />
           </div>
         </div>
 
@@ -642,7 +649,7 @@
           </div>
           <div class="timeline-image">
             <img
-              src="./assets/visualizing-growth-with-dynamic-bar-chart_1285516-18431.jpg"
+              src="assets/visualizing-growth-with-dynamic-bar-chart_1285516-18431.jpg"
               alt="التوسع"
             />
           </div>
@@ -658,10 +665,7 @@
             </p>
           </div>
           <div class="timeline-image">
-            <img
-              src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&q=80&w=800"
-              alt="الاعتماد"
-            />
+            <img src="assets/trust-3031679_1280.jpg" alt="الاعتماد" />
           </div>
         </div>
 
@@ -675,10 +679,7 @@
             </p>
           </div>
           <div class="timeline-image">
-            <img
-              src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&q=80&w=800"
-              alt="المستقبل"
-            />
+            <img src="assets/surgery-1807541_1280.jpg" alt="المستقبل" />
           </div>
         </div>
       </div>
@@ -714,10 +715,7 @@
       <h2 class="section-title" data-reveal>صحة عائلتك.. أولويتنا</h2>
       <div class="family-grid">
         <div class="family-card" data-reveal>
-          <img
-            src="https://images.unsplash.com/photo-1614113036347-9f60df80730a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=897"
-            alt="أطفال سعداء"
-          />
+          <img src="assets/family.jpg" alt="أطفال سعداء" />
           <div class="family-overlay">
             <h4>رعاية صحية للأطفال</h4>
           </div>
@@ -725,7 +723,7 @@
 
         <div class="family-card" data-reveal>
           <img
-            src="https://images.unsplash.com/photo-1590527548172-295fdcb1bab0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=388"
+            src="assets/top-view-cute-family-concept-arrangement.jpg"
             alt="عائلة مسلمة"
           />
           <div class="family-overlay">
@@ -734,10 +732,7 @@
         </div>
 
         <div class="family-card" data-reveal>
-          <img
-            src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=800"
-            alt="طفل يبتسم"
-          />
+          <img src="assets/lab-217043_1280.jpg" alt="طفل يبتسم" />
           <div class="family-overlay">
             <h4>نتائج دقيقة وسريعة</h4>
           </div>
@@ -760,7 +755,7 @@
           </div>
         </div>
         <div style="text-align: left">
-          <div style="font-size: 14px; font-weight: 600">01122772707</div>
+          <div style="font-size: 14px; font-weight: 600">01557771094</div>
           <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
             info@lifepluslab.com
           </div>

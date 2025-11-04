@@ -45,7 +45,7 @@
             rgba(49 39 132),
             rgba(0, 178, 201, 0.25)
           ),
-          url("https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1400");
+          url("assets/laboratory-8895976_1280.png");
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -294,7 +294,7 @@
 
             <li class="has-dropdown">
               <button class="drop-toggle">
-                <span class="nav-link active">عن المعمل</span>
+                <span class="nav-link">عن المعمل</span>
                 <span>▾</span>
               </button>
               <div class="dropdown">
@@ -303,7 +303,7 @@
               </div>
             </li>
 
-            <li><a class="nav-link" href="services.html">خدماتنا</a></li>
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
 
             <li class="has-dropdown">
               <button class="drop-toggle">
@@ -323,20 +323,21 @@
               </button>
               <div class="dropdown">
                 <a href="personal-tests.html">تحاليل شخصية</a>
-                <a href="blood_2_f.html">فحص شامل</a>
-                <a href="prantent_2_f.html">برنامج أمومة</a>
-                <a href="baby_2_f.html">فحص حديثي الولادة</a>
+                <a href="full-check.html">فحص شامل</a>
+                <a href="motherhood.html">برنامج أمومة</a>
+                <a href="baby.html">فحص حديثي الولادة</a>
               </div>
             </li>
 
             <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+            <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
           </ul>
         </nav>
 
         <div class="header-contact">
-          <a href="tel:01122772707">
+          <a href="tel:01557771094">
             <i class="fa-solid fa-phone"></i>
-            <span>01122772707</span>
+            <span>01557771094</span>
           </a>
           <a href="mailto:info@lifepluslab.com">
             <i class="fa-solid fa-envelope"></i>
@@ -345,7 +346,7 @@
         </div>
 
         <button class="burger" id="burger">
-          <i class="fa-solid fa-bars"></i>
+          <i id="burger" class="fa-solid fa-bars"></i>
         </button>
 
         <div class="mobile-panel" id="mobilePanel">
@@ -365,6 +366,15 @@
               <a href="lists.html">قائمة التحاليل</a>
             </div>
           </div>
+          <div>
+            <a class="sub-toggle" data-target="m-checks">فحوصات ▾</a>
+            <div class="sub-links" id="m-checks" style="display: none">
+              <a href="personal-tests.html"> تحاليل شخصية</a>
+              <a href="full-check.html">فحص شامل</a>
+              <a href="parenet.html">برنامج أمومة</a>
+              <a href="baby.html">فحص حديثي الولادة</a>
+            </div>
+          </div>
           <a href="branches.html">فروعنا</a>
           <div
             style="
@@ -374,10 +384,10 @@
             "
           >
             <a
-              href="tel:01122772707"
+              href="tel:01557771094"
               style="color: var(--turq-700); font-size: 13px"
             >
-              <i class="fa-solid fa-phone"></i> 01122772707
+              <i class="fa-solid fa-phone"></i> 01557771094
             </a>
             <a
               href="mailto:info@lifepluslab.com"
@@ -568,22 +578,13 @@
       <h2 class="section-title center" data-reveal>بيئة عمل احترافية</h2>
       <div class="gallery-grid">
         <div class="gallery-item" data-reveal>
-          <img
-            src="https://pixabay.com/get/g22c2a4e8a6a941778238a615ea2439b20113887fc3ad937afdc27c2ff1335eb594ce1820e8f1e1624d27ab7322142f13_1280.jpg"
-            alt="معمل متقدم"
-          />
+          <img src="assets/lab-devices.jpg" alt="معمل متقدم" />
         </div>
         <div class="gallery-item" data-reveal>
-          <img
-            src="https://pixabay.com/get/g0e3993f22e9e10c4f59af2d7ff8e419c2a2e0b32d9984181044457cbc1aede5c6343e9e7c24e57fa41f2d68659bcf6166da0ccab850b886eedc706dc22dc871b_1280.jpg"
-            alt="أجهزة حديثة"
-          />
+          <img src="assets/hospital-3089884_1280.jpg" alt="أجهزة حديثة" />
         </div>
         <div class="gallery-item" data-reveal>
-          <img
-            src="https://pixabay.com/get/g92df7051f9b2fd8d1546dd86c3b2f5a90559e80a4d89c7ae271394d4d0e48bb649c42f18dd84e405fefa27007d24c8d3_1280.jpg"
-            alt="فريق محترف"
-          />
+          <img src="assets/hospital-6805786_1280.jpg" alt="فريق محترف" />
         </div>
       </div>
     </section>
@@ -603,7 +604,7 @@
           </div>
         </div>
         <div style="text-align: left">
-          <div style="font-size: 14px; font-weight: 600">01122772707</div>
+          <div style="font-size: 14px; font-weight: 600">01557771094</div>
           <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
             info@lifepluslab.com
           </div>

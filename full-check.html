@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>برنامج الفحص الشامل — معامل لايف بلس</title>
+    <!-- Icons -->
+    <link rel="icon" href="assets/ICON.png" />
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Cards Grid */
+      .checkup-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 40px;
+      }
+      @media (min-width: 640px) {
+        .checkup-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .checkup-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Card Style */
+      .checkup-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(6, 25, 30, 0.06);
+        transition: all var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .checkup-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--turq-700), var(--turq-500));
+      }
+      .checkup-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 40px rgba(6, 25, 30, 0.15);
+      }
+      .checkup-card .icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--turq-100), var(--turq-200));
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 16px;
+        font-size: 28px;
+        color: var(--turq-700);
+        box-shadow: 0 4px 12px rgba(0, 178, 201, 0.2);
+      }
+      .checkup-card h3 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #071516;
+        margin: 0 0 8px;
+        line-height: 1.4;
+      }
+      .checkup-card p {
+        font-size: 14px;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      /* Special Highlight for Groups */
+      .highlight-group {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #f8fdff, #e6faff);
+        border: 2px dashed var(--turq-300);
+        padding: 32px;
+        border-radius: var(--radius);
+        text-align: center;
+      }
+      .highlight-group h3 {
+        font-size: 18px;
+        color: var(--turq-700);
+        margin-bottom: 16px;
+        font-weight: 900;
+      }
+      .highlight-group .cards-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      @media (min-width: 768px) {
+        .highlight-group .cards-inner {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="values.html">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="full-check.html">فحص شامل</a>
+                <a href="motherhood.html">برنامج أمومة</a>
+                <a href="baby.html">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+            <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01557771094">
+            <i class="fa-solid fa-phone"></i>
+            <span>01557771094</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i id="burger" class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="index.html">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="services.html">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
+            </div>
+          </div>
+          <div>
+            <a class="sub-toggle" data-target="m-checks">فحوصات ▾</a>
+            <div class="sub-links" id="m-checks" style="display: none">
+              <a href="personal-tests.html"> تحاليل شخصية</a>
+              <a href="full-check.html">فحص شامل</a>
+              <a href="parenet.html">برنامج أمومة</a>
+              <a href="baby.html">فحص حديثي الولادة</a>
+            </div>
+          </div>
+          <a href="branches.html">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01557771094"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01557771094
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="hero"
+      style="
+        background-image: linear-gradient(
+            180deg,
+            rgb(49 39 131),
+            rgba(0, 178, 201, 0.15)
+          ),
+          url('assets/hospital-6805786_1280.jpg');
+      "
+    >
+      <div class="hero-inner wrap" data-reveal>
+        <div>
+          <h1 class="hero-title">برنامج الفحص الشامل</h1>
+          <p class="hero-sub">
+            اكتشف صحتك بكل دقة من خلال باقة تحاليل علمية متقدمة للكشف المبكر عن
+            الأمراض وتقييم أداء أجهزة الجسم
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#checkup">ابدأ الفحص</a>
+            <a class="btn ghost" href="contact.html">استشر مختص</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="wrap" style="padding: 80px 0" id="checkup">
+      <div class="center" data-reveal>
+        <h2 class="section-title">برنامج الفحص الشامل</h2>
+        <p
+          style="
+            max-width: 900px;
+            margin: 16px auto 48px;
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.8;
+          "
+        >
+          برنامجنا الشامل عبارة عن مجموعة من التحاليل المختارة بعناية علمية
+          للاطمئنان على أجهزة الجسم المختلفة، والكشف المبكر عن أي مرض قد يؤثر
+          على حياتك مستقبلاً دون أن تشعر به.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="checkup-grid" data-reveal>
+        <!-- Main Tests -->
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+          <h3>صورة دم كاملة CBC</h3>
+          <p>تقييم شامل لخلايا الدم للكشف عن أي اختلالات أو عدوى.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>سرعة الترسيب</h3>
+          <p>مؤشر للالتهابات الروماتيزمية والمناعية.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-candy-cane"></i></div>
+          <h3>تحليل السكر</h3>
+          <p>قياس مستوى السكر وقت إجراء التحاليل.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-burger"></i></div>
+          <h3>مجموعة الدهون</h3>
+          <p>قياس الكوليسترول والدهون الثلاثية للوقاية من أمراض القلب.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>وظائف الكبد</h3>
+          <p>للاطمئنان على كفاءة الكبد وأدائه.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-filter"></i></div>
+          <h3>وظائف الكلى</h3>
+          <p>تقييم أداء الكلى وحماية الجسم من السموم.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>حمض البوليك</h3>
+          <p>للكشف عن مرض النقرس ومنع تفاقمه.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-flask"></i></div>
+          <h3>تحليل بول شامل</h3>
+          <p>كشف الالتهابات، الأملاح، الزلال، السكر، والصفراء.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3>تحليل براز شامل</h3>
+          <p>كشف الطفيليات والالتهابات في الجهاز الهضمي.</p>
+        </div>
+      </div>
+
+      <!-- Additional Tests -->
+      <div class="highlight-group" data-reveal>
+        <h3>تحاليل إضافية متقدمة</h3>
+        <div class="cards-inner">
+          <div class="checkup-card">
+            <div class="icon"><i class="fa-solid fa-bone"></i></div>
+            <h3>الكالسيوم بالدم Ca</h3>
+            <p>دعم صحة العظام والأعصاب.</p>
+          </div>
+          <div class="checkup-card">
+            <div class="icon"><i class="fa-solid fa-circle-radiation"></i></div>
+            <h3>الغدة الدرقية TSH</h3>
+            <p>تشخيص مبكر لمشاكل الغدة الدرقية.</p>
+          </div>
+          <div class="checkup-card">
+            <div class="icon"><i class="fa-solid fa-heart"></i></div>
+            <h3>إنزيم القلب CK</h3>
+            <p>للاطمئنان على صحة القلب.</p>
+          </div>
+          <div class="checkup-card">
+            <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+            <h3>الصوديوم والبوتاسيوم Na, K</h3>
+            <p>توازن الأملاح في الجسم.</p>
+          </div>
+          <div class="checkup-card">
+            <div class="icon"><i class="fa-solid fa-hand-dots"></i></div>
+            <h3>معامل الروماتويد</h3>
+            <p>كشف مرض الروماتويد مبكرًا.</p>
+          </div>
+          <div class="checkup-card">
+            <div class="icon"><i class="fa-solid fa-bacteria"></i></div>
+            <h3>جرثومة المعدة</h3>
+            <p>كشف وعلاج جرثومة المعدة.</p>
+          </div>
+          <div class="checkup-card">
+            <div class="icon">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3>مؤشر الأورام CEA</h3>
+            <p>كشف مبكر لإمكانية وجود أورام.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Special Groups -->
+      <div class="checkup-grid" data-reveal>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-child"></i></div>
+          <h3>خاص بالأطفال: الحديد (Fe, TIBC)</h3>
+          <p>كشف أنيميا نقص الحديد.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-seedling"></i></div>
+          <h3>أنيميا الفول G6PD</h3>
+          <p>تحديد نقص الإنزيم.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-mars"></i></div>
+          <h3>خاص بالرجال: PSA</h3>
+          <p>دلالات أورام البروستاتا.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-venus"></i></div>
+          <h3>خاص بالسيدات: CA15.3</h3>
+          <p>دلالات أورام الثدي.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>متوسط السكر (HbA1c)</h3>
+          <p>تقييم السكر خلال 3 أشهر.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-virus"></i></div>
+          <h3>التهاب الكبد الفيروسي B, C</h3>
+          <p>كشف مبكر للفيروسات الكبدية.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-dna"></i></div>
+          <h3>هرمونات الذكورة</h3>
+          <p>تقييم الخصوبة وتأخر الإنجاب.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-lungs-virus"></i></div>
+          <h3>مرض الدرن (السل)</h3>
+          <p>كشف وعلاج السل مبكرًا.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon">
+            <i class="fa-solid fa-prescription-bottle-medical"></i>
+          </div>
+          <h3>فحص الميكروب والمضاد الحيوي</h3>
+          <p>تحديد العلاج المناسب.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-capsules"></i></div>
+          <h3>الكشف عن المخدرات</h3>
+          <p>فحص شامل لجميع أنواع المواد.</p>
+        </div>
+        <div class="checkup-card">
+          <div class="icon"><i class="fa-solid fa-syringe"></i></div>
+          <h3>ضبط جرعة الدواء</h3>
+          <p>قياس نسبة البول لتعديل الجرعات بدقة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div class="muted" style="margin-top: 4px; font-size: 13px">
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01557771094</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+  </body>
+</html>

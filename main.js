@@ -1,5 +1,5 @@
 (function () {
-  const burger = document.getElementById("burger");
+  const burger = document.querySelectorAll(".burger");
   const mobilePanel = document.getElementById("mobilePanel");
   const toTop = document.getElementById("toTop");
   const pageLoader = document.getElementById("pageLoader");
@@ -12,17 +12,19 @@
 
   // Burger toggle
   let mobileOpen = false;
-  burger.addEventListener("click", () => {
-    mobileOpen = !mobileOpen;
-    if (mobileOpen) {
-      mobilePanel.style.display = "block";
-      burger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    } else {
-      mobilePanel.style.display = "none";
-      burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    }
-  });
 
+  burger.forEach((b) => {
+    b.addEventListener("click", () => {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobilePanel.style.display = "block";
+        burger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      } else {
+        mobilePanel.style.display = "none";
+        burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    });
+  });
   // Desktop dropdowns
   document.querySelectorAll(".has-dropdown .drop-toggle").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -37,8 +39,7 @@
   });
 
   // Mobile sub-toggles
-  document.querySelector(".sub-toggle").forEach((s) => {
-    // selector not selectors to fix button
+  document.querySelectorAll(".sub-toggle").forEach((s) => {
     s.addEventListener("click", (e) => {
       e.preventDefault();
       const id = s.dataset.target;

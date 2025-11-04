@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>تحضيرات التحاليل — معامل لايف بلس</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Additional styles for prep page */
+      .page-header {
+        min-height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        padding: 140px 12px 60px;
+        background-image: linear-gradient(
+            180deg,
+            rgba(0, 127, 164, 0.75),
+            rgba(0, 178, 201, 0.25)
+          ),
+          url("assets/laboratory-8895976_1280.png");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.3)
+        );
+        pointer-events: none;
+      }
+      .page-header-content {
+        position: relative;
+        z-index: 2;
+      }
+      .page-title {
+        font-size: 46px;
+        font-weight: 900;
+        line-height: 1.1;
+        text-shadow: 0 8px 24px rgba(2, 18, 20, 0.4);
+        margin: 0;
+      }
+      .breadcrumb {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .breadcrumb a {
+        transition: color var(--transition);
+      }
+      .breadcrumb a:hover {
+        color: white;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 70px 0;
+      }
+      .faq-intro {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: center;
+      }
+      .faq-intro h2 {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 16px;
+      }
+      .faq-intro p {
+        font-size: 16px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 24px;
+      }
+
+      .faq-item {
+        background: var(--card-bg);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(6, 25, 30, 0.06);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+        transition: all var(--transition);
+      }
+      .faq-item:hover {
+        box-shadow: 0 8px 24px rgba(6, 25, 30, 0.1);
+      }
+
+      .faq-question {
+        padding: 20px 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: all var(--transition);
+        position: relative;
+        user-select: none;
+      }
+      .faq-question:hover {
+        background: rgba(0, 127, 164, 0.03);
+      }
+
+      .faq-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        color: white;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .faq-title {
+        flex: 1;
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--turq-700);
+        line-height: 1.4;
+      }
+
+      .faq-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(0, 127, 164, 0.1);
+        display: grid;
+        place-items: center;
+        color: var(--turq-700);
+        font-size: 16px;
+        transition: all var(--transition);
+        flex-shrink: 0;
+      }
+
+      .faq-item.active .faq-icon {
+        background: var(--turq-700);
+        color: white;
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 400ms ease, padding 400ms ease;
+        padding: 0 24px;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 1000px;
+        padding: 0 24px 24px;
+      }
+
+      .faq-answer-content {
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 15px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(6, 25, 30, 0.06);
+      }
+
+      /* Info Box */
+      .info-box {
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        color: white;
+        padding: 40px;
+        border-radius: 16px;
+        margin-top: 50px;
+        text-align: center;
+        box-shadow: 0 8px 28px rgba(0, 127, 164, 0.25);
+      }
+      .info-box h3 {
+        font-size: 24px;
+        font-weight: 900;
+        margin: 0 0 12px 0;
+      }
+      .info-box p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0;
+        opacity: 0.95;
+      }
+
+      @media (max-width: 1000px) {
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-title {
+          font-size: 32px;
+        }
+        .faq-title {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="values.html">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="full-check.html">فحص شامل</a>
+                <a href="motherhood.html">برنامج أمومة</a>
+                <a href="baby.html">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+            <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01557771094">
+            <i class="fa-solid fa-phone"></i>
+            <span>01557771094</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i id="burger" class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="index.html">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="services.html">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
+            </div>
+          </div>
+          <div>
+            <a class="sub-toggle" data-target="m-checks">فحوصات ▾</a>
+            <div class="sub-links" id="m-checks" style="display: none">
+              <a href="personal-tests.html"> تحاليل شخصية</a>
+              <a href="full-check.html">فحص شامل</a>
+              <a href="parenet.html">برنامج أمومة</a>
+              <a href="baby.html">فحص حديثي الولادة</a>
+            </div>
+          </div>
+          <a href="branches.html">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01557771094"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01557771094
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="page-header-content" data-reveal>
+        <h1 class="page-title">تحضيرات التحاليل</h1>
+        <div class="breadcrumb">
+          <a href="index.html">الرئيسية</a>
+          <span>•</span>
+          <span>تحضيرات التحاليل</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section wrap">
+      <div class="faq-intro" data-reveal>
+        <h2>إرشادات قبل إجراء التحاليل</h2>
+        <p>
+          للحصول على نتائج دقيقة وموثوقة، يرجى اتباع التعليمات التالية بعناية
+          قبل إجراء التحاليل المطلوبة
+        </p>
+      </div>
+
+      <div class="faq-grid">
+        <!-- Column 1 -->
+        <div>
+          <!-- FAQ 1 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">1</div>
+              <div class="faq-title">السكر الصائم</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط الصيام من 6-8 ساعات ويُسمح بشرب الماء فقط أثناء فترة
+                الصيام
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">2</div>
+              <div class="faq-title">سكر بعد الأكل بساعتين</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط احتساب الساعتين من بداية الأكل ويشترط تناول الطعام في خلال
+                أول عشر دقائق من بداية الساعتين. لا يُسمح بتناول أي طعام خلال
+                الساعتين، يُسمح فقط بتناول الماء والعلاج إن وُجد، كما يُرجى
+                الحضور إلى المعمل قبل انتهاء الساعتين بربع ساعة على الأقل.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">3</div>
+              <div class="faq-title">منحنى السكر في الدم</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يحضر المريض إلى المعمل صائماً وتُؤخذ منه عينة، ثم يتناول جرعة
+                جلوكوز يوفرها المعمل ويتم حسابها حسب وزن كل مريض، ثم يتم أخذ
+                عينات بعد نصف ساعة ثم ساعة ثم ساعتين ثم ثلاث ساعات من تناول جرعة
+                الجلوكوز. لا يُسمح بتناول أي طعام أو شراب خلال فترة عمل المنحنى
+                ويُسمح فقط بتناول الماء والعلاج.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">4</div>
+              <div class="faq-title">دهنيات الدم</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط الصيام من 12-14 ساعة على الأقل ويُسمح بشرب الماء فقط خلال
+                فترة الصيام
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">5</div>
+              <div class="faq-title">تحاليل المنى</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط الامتناع عن الجماع أو الاحتلام لمدة أربع أيام متتالية،
+                ويُفضل إعطاء العينة بالمعمل مع الاهتمام بوضع النقط الأولى من
+                المنى في الزجاجة الخاصة بذلك.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">6</div>
+              <div class="faq-title">تحليل البروستاتا أو مسحة القضيب</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يتم عمل هذا التحليل بميعاد سابق ويشترط حجز البول لمدة ساعة قبل
+                إجراء التحليل، ويُفضل الامتناع عن المضاد الحيوي لمدة لا تقل عن
+                48 ساعة.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">7</div>
+              <div class="faq-title">مسحة أمراض النساء</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط الحجز بميعاد سابق ويشترط عدم الجماع لمدة يومين وعدم غسيل
+                المهبل يوم إجراء التحليل، ويُفضل الامتناع عن المضاد الحيوي 48
+                ساعة قبل التحليل.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">8</div>
+              <div class="faq-title">تحليل أنيميا الفول</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط عدم إجراء التحليل بعد نقل الدم أو انتكاسة
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">9</div>
+              <div class="faq-title">
+                الأدوية العلاجية (الربو - الصرع - القلب)
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يُؤخذ الدواء بانتظام لمدة خمسة أيام على الأقل قبل إجراء التحليل،
+                ويشترط عدم القيء أو الإسهال لمدة 48 ساعة قبل التحليل.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+          <!-- FAQ 10 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">10</div>
+              <div class="faq-title">مزرعة البول</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط غسيل اليد والأعضاء التناسلية بالماء، ثم تطهير فتحة البول
+                بالكحول للرجال أو بالديتول أو السافلون للنساء، ويُغسل مرة أخرى
+                بالماء فقط لإزالة المطهر. أفرغ أول نقطة بول في دورة المياه ويتم
+                وضع الباقي في البرطمان المعقم الذي يوفره المعمل. يُفضل الامتناع
+                عن المضاد الحيوي لمدة لا تقل عن 48 ساعة قبل إجراء التحليل.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 11 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">11</div>
+              <div class="faq-title">بول الحمل</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يُفضل أول بول في الصباح مع عدم تناول أي سوائل مساء اليوم السابق
+                للتحليل. إذا كانت النتيجة سلبية، يُقترح إجراء اختبار الحمل في
+                الدم لأنه أكثر حساسية.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 12 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">12</div>
+              <div class="faq-title">تجميع بول 24 ساعة</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                فور القيام من النوم يتم التبول في دورة المياه ويُسجل الوقت، ثم
+                يتم تجميع كل نقطة بول بعد ذلك في إناء التجميع حتى اليوم التالي
+                في نفس ميعاد القيام من النوم، ثم يُحفظ في الثلاجة لحين إرساله
+                للمعمل في أسرع وقت.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 13 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">13</div>
+              <div class="faq-title">تجميع بصاق ثلاثة أيام متتالية</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط أخذ أول عينة في الصباح وذلك لمدة ثلاثة أيام متتالية،
+                وتُرسل كل عينة منفصلة للمعمل في نفس اليوم. يمكن استنشاق بخار ماء
+                لتسهيل إعطاء العينة، ويشترط أن تكون العينة بصاق وليس لعاب.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 14 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">14</div>
+              <div class="faq-title">مزرعة البراز</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                الامتناع عن أخذ المضاد الحيوي لمدة 48 ساعة قبل التحليل. بالنسبة
+                للأطفال، لا يقبل المعمل أي عينة مُرسلة في حفاضة.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 15 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">15</div>
+              <div class="faq-title">الدم الخفي في البراز</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يمتنع المريض لمدة 48 ساعة قبل إجراء التحليل عن تناول الأطعمة
+                التالية: اللحوم، الفجل، أدوية الروماتيزم، الأسبرين، أو أي أدوية
+                تحتوي على فيتامين C أو حديد أو كورتيزون.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 16 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">16</div>
+              <div class="faq-title">VMA - 5HIAA - Catecholamines</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                يشترط تجميع بول 24 ساعة في زجاجة خاصة يتسلمها المريض من المعمل،
+                ويشترط امتناع المريض عن تناول الأطعمة التالية لمدة 48 ساعة قبل
+                التجميع: الشوكولاتة، الموز، البرتقال، الأناناس، الطماطم، الشاي،
+                القهوة، والمكسرات.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="info-box" data-reveal>
+        <h3>نصيحة هامة</h3>
+        <p>
+          التعليمات أعلاه ضرورية لضمان دقة النتائج. في حالة وجود أي استفسار،
+          يرجى التواصل معنا قبل إجراء التحاليل.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div class="muted" style="margin-top: 4px; font-size: 13px">
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01557771094</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+      // FAQ Accordion Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+
+            // Close all others
+            faqItems.forEach((other) => {
+              if (other !== item) {
+                other.classList.remove("active");
+              }
+            });
+
+            // Toggle current
+            item.classList.toggle("active", !isActive);
+          });
+        });
+
+        // Optional: Reveal animation
+        const reveals = document.querySelectorAll("[data-reveal]");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        reveals.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

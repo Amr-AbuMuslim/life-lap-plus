@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>التحاليل التشخيصية — معامل لايف بلس</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Page Header */
+      .page-header {
+        min-height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        padding: 140px 12px 60px;
+        background-image: linear-gradient(
+            180deg,
+            rgba(0, 127, 164, 0.75),
+            rgba(0, 178, 201, 0.25)
+          ),
+          url("assets/laboratory-8895976_1280.png");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.3)
+        );
+        pointer-events: none;
+      }
+      .page-header-content {
+        position: relative;
+        z-index: 2;
+      }
+      .page-title {
+        font-size: 46px;
+        font-weight: 900;
+        line-height: 1.1;
+        text-shadow: 0 8px 24px rgba(2, 18, 20, 0.4);
+        margin: 0;
+      }
+      .breadcrumb {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .breadcrumb a {
+        transition: color var(--transition);
+      }
+      .breadcrumb a:hover {
+        color: white;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 70px 0;
+      }
+      .faq-intro {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: center;
+      }
+      .faq-intro h2 {
+        font-size: 32px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 16px;
+      }
+      .faq-intro p {
+        font-size: 16px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 24px;
+      }
+
+      .faq-item {
+        background: var(--card-bg);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(6, 25, 30, 0.06);
+        border: 1px solid rgba(6, 25, 30, 0.04);
+        transition: all var(--transition);
+      }
+      .faq-item:hover {
+        box-shadow: 0 8px 24px rgba(6, 25, 30, 0.1);
+      }
+
+      .faq-question {
+        padding: 20px 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: all var(--transition);
+        position: relative;
+        user-select: none;
+      }
+      .faq-question:hover {
+        background: rgba(0, 127, 164, 0.03);
+      }
+
+      .faq-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        color: white;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .faq-title {
+        flex: 1;
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--turq-700);
+        line-height: 1.4;
+      }
+
+      .faq-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(0, 127, 164, 0.1);
+        display: grid;
+        place-items: center;
+        color: var(--turq-700);
+        font-size: 16px;
+        transition: all var(--transition);
+        flex-shrink: 0;
+      }
+
+      .faq-item.active .faq-icon {
+        background: var(--turq-700);
+        color: white;
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 400ms ease, padding 400ms ease;
+        padding: 0 24px;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 3000px;
+        padding: 0 24px 24px;
+      }
+
+      .faq-answer-content {
+        color: var(--muted);
+        line-height: 1.9;
+        font-size: 15px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(6, 25, 30, 0.06);
+      }
+      .faq-answer-content ul {
+        margin: 12px 0;
+        padding-right: 20px;
+      }
+      .faq-answer-content li {
+        margin-bottom: 6px;
+      }
+
+      .faq-answer-content strong {
+        color: var(--turq-700);
+        font-weight: 800;
+      }
+
+      .info-box {
+        background: linear-gradient(135deg, var(--turq-500), var(--turq-700));
+        color: white;
+        padding: 40px;
+        border-radius: 16px;
+        margin-top: 50px;
+        text-align: center;
+        box-shadow: 0 8px 28px rgba(0, 127, 164, 0.25);
+      }
+      .info-box h3 {
+        font-size: 24px;
+        font-weight: 900;
+        margin: 0 0 12px 0;
+      }
+      .info-box p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0;
+        opacity: 0.95;
+      }
+
+      @media (max-width: 1000px) {
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-title {
+          font-size: 32px;
+        }
+        .faq-title {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="values.html">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="full-check.html">فحص شامل</a>
+                <a href="motherhood.html">برنامج أمومة</a>
+                <a href="baby.html">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+            <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01557771094">
+            <i class="fa-solid fa-phone"></i>
+            <span>01557771094</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i id="burger" class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="index.html">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="services.html">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
+            </div>
+          </div>
+          <div>
+            <a class="sub-toggle" data-target="m-checks">فحوصات ▾</a>
+            <div class="sub-links" id="m-checks" style="display: none">
+              <a href="personal-tests.html"> تحاليل شخصية</a>
+              <a href="full-check.html">فحص شامل</a>
+              <a href="parenet.html">برنامج أمومة</a>
+              <a href="baby.html">فحص حديثي الولادة</a>
+            </div>
+          </div>
+          <a href="branches.html">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01557771094"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01557771094
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="page-header-content" data-reveal>
+        <h1 class="page-title">التحاليل التشخيصية</h1>
+        <div class="breadcrumb">
+          <a href="index.html">الرئيسية</a>
+          <span>•</span>
+          <span>التحاليل التشخيصية</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section wrap">
+      <div class="faq-intro" data-reveal>
+        <h2>مجموعات التحاليل التشخيصية المتقدمة</h2>
+        <p>
+          نقدم باقات تشخيصية متكاملة للأمراض المعقدة والمزمنة بدقة عالية ونتائج
+          سريعة.
+        </p>
+      </div>
+
+      <div class="faq-grid">
+        <!-- Column 1 -->
+        <div>
+          <!-- FAQ 1 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">1</div>
+              <div class="faq-title">
+                مجموعة تحاليل أمراض القلب PROFILE PAIN CHEST CARDIAC
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Troponin</li>
+                  <li>CK MB</li>
+                  <li>Creatine Phosphokinase (CPK) Total</li>
+                  <li>LDH (Lactate Dehydrogenase)</li>
+                  <li>Myoglobin</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">2</div>
+              <div class="faq-title">وظائف الكبد FUNCTION LIVER</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>ALT</li>
+                  <li>AST</li>
+                  <li>Alkaline Phosphatase</li>
+                  <li>GGT</li>
+                  <li>BENVENUE, Total & Direct</li>
+                  <li>Albumin</li>
+                  <li>Protein, Total</li>
+                  <li>A/G Ratio</li>
+                  <li>Prothrombin time</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">3</div>
+              <div class="faq-title">وظائف الكلى FUNCTION RENAL</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Urea or BUN</li>
+                  <li>Creatinine</li>
+                  <li>Uric Acid</li>
+                  <li>Na</li>
+                  <li>K</li>
+                  <li>Urine analysis</li>
+                  <li>Phosphorus</li>
+                  <li>Ca (Total & Ionized)</li>
+                  <li>Mg</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">4</div>
+              <div class="faq-title">
+                مجموعة التحاليل الخاصة بالأنيميا PROFILES ANEMIA
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <strong>Anemia Screen Profile:</strong><br />
+                <ul>
+                  <li>CBC</li>
+                  <li>Iron</li>
+                  <li>Ferritin</li>
+                  <li>Total Iron Binding Capacity (TIBC)</li>
+                  <li>Vitamin B12</li>
+                  <li>Folic Acid</li>
+                  <li>Reticulocytic Count</li>
+                  <li>Coomb's Test (Direct & Indirect)</li>
+                  <li>G6PD</li>
+                  <li>Osmotic Fragility</li>
+                  <li>Haemoglobin Electrophoresis</li>
+                  <li>Haptoglobin</li>
+                </ul>
+                <strong>Haemolytic Anemia Profile:</strong><br />
+                <ul>
+                  <li>CBC</li>
+                  <li>Reticulocytic Count</li>
+                  <li>Coomb's Test (Direct & Indirect)</li>
+                  <li>G6PD</li>
+                  <li>Osmotic Fragility</li>
+                  <li>Cryoglobulin</li>
+                  <li>Bilirubin (Total & Direct)</li>
+                </ul>
+                <strong>Microcytic Anemia:</strong><br />
+                <ul>
+                  <li>Iron</li>
+                  <li>Ferritin</li>
+                  <li>Total Iron Binding Capacity (TIBC)</li>
+                </ul>
+                <strong>Macrocytic Anemia:</strong><br />
+                <ul>
+                  <li>Folic Acid</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">5</div>
+              <div class="faq-title">
+                مجموعة التحاليل الخاصة باضطرابات الأنسجة الضامة CONNECTIVE
+                TISSUE DISORDERS
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>CBC</li>
+                  <li>ESR</li>
+                  <li>Uric Acid</li>
+                  <li>Rheumatoid Factor (Latex & Rose Waller)</li>
+                  <li>ANA</li>
+                  <li>Anti DNA</li>
+                  <li>Anti RNP</li>
+                  <li>Anti Smith Antibody</li>
+                  <li>Anti Ro (ss-A)</li>
+                  <li>Anti La (ss-B)</li>
+                  <li>Anti Jo-1</li>
+                  <li>Anti Scl 70</li>
+                  <li>HLA B27</li>
+                  <li>Anti CCP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">6</div>
+              <div class="faq-title">تشخيص الوهن العضلي GRAVIS MYASTHENIA</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Acetylcholine Receptors Antibody (AChR)</li>
+                  <li>Anti Striated Muscle Antibody (Skeletal Muscle)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">7</div>
+              <div class="faq-title">
+                مجموعة أمراض الكبد المناعية PANNEL AUTOIMMUNE LIVER
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Anti LKM (Liver, Kidney & Microsomal)</li>
+                  <li>AMA (Anti Mitochondrial Antibody)</li>
+                  <li>ANA</li>
+                  <li>ASMA (Anti Smooth Muscle Antibody)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">8</div>
+              <div class="faq-title">
+                مجموعة التهاب الأوعية الدموية PANNEL AUTOIMMUNE VASCULITIS
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>ANA</li>
+                  <li>Anti DNA</li>
+                  <li>Rheumatoid Factor (Latex & Rose Waller)</li>
+                  <li>ANCA (Anti Neutrophil Cytoplasmic Antibody)</li>
+                  <li>Cryoglobulin</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">9</div>
+              <div class="faq-title">
+                مجموعة التهاب المفاصل المناعية AUTOIMMUNE, ARTHRITIS
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Calcium, Total & Ionized</li>
+                  <li>Phosphorus, Inorganic</li>
+                  <li>Uric Acid</li>
+                  <li>C-Reactive protein</li>
+                  <li>Rheumatoid factor</li>
+                  <li>Anti-Streptolysin O titer (ASOT)</li>
+                  <li>Erythrocyte Sedimentation Rate</li>
+                  <li>ANA, Titer</li>
+                  <li>Anti-DNA</li>
+                  <li>Anti-Smith</li>
+                  <li>Anti-Ro(SSA)</li>
+                  <li>Anti-La(SSB)</li>
+                  <li>Anti-Scl-70</li>
+                  <li>Anti CCP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 10 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">10</div>
+              <div class="faq-title">
+                FEVER OF UNKNOWN ORIGIN الحمى مجهولة السبب
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Complete Blood Picture (CBC)</li>
+                  <li>Erythrocyte Sedimentation Rate (ESR)</li>
+                  <li>C-Reactive Protein</li>
+                  <li>Widal & Brucella Test</li>
+                  <li>Urine Culture</li>
+                  <li>Stool Culture</li>
+                  <li>Blood Culture</li>
+                  <li>Throat Swab Culture</li>
+                  <li>Anti Nuclear Antibodies (ANA)</li>
+                  <li>Epstein Barr Virus IgG & IgM</li>
+                  <li>Cytomegalovirus (CMV) IgG & IgM</li>
+                  <li>HIV Antibody</li>
+                  <li>Malaria Antigen</li>
+                  <li>Anti Amoeba Antibody</li>
+                  <li>Anti Fasciola Antibody</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 11 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">11</div>
+              <div class="faq-title">
+                مجموعة تحاليل الخصوبة PROFILES INFERTILITY
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <strong>Male Infertility Profile:</strong><br />
+                <ul>
+                  <li>Testosterone (Total & Free)</li>
+                  <li>Semen Examination</li>
+                  <li>FSH</li>
+                  <li>LH</li>
+                  <li>Prolactin</li>
+                  <li>Progesterone</li>
+                  <li>TSH</li>
+                </ul>
+                <strong>Impotence Profile:</strong><br />
+                <ul>
+                  <li>Testosterone (Total & Free)</li>
+                  <li>Fasting Blood Sugar</li>
+                  <li>Prolactin</li>
+                </ul>
+                <strong>Female Infertility Profile:</strong><br />
+                <ul>
+                  <li>FSH</li>
+                  <li>LH</li>
+                  <li>E2 (Estradiol)</li>
+                  <li>Progesterone</li>
+                  <li>Prolactin</li>
+                  <li>Testosterone (Total & Free)</li>
+                  <li>DHEA-S</li>
+                  <li>TSH</li>
+                </ul>
+                <strong>Amenorrhea Profile:</strong><br />
+                <ul>
+                  <li>FSH</li>
+                  <li>LH</li>
+                  <li>E2 (Estradiol)</li>
+                  <li>Progesterone</li>
+                  <li>Prolactin</li>
+                </ul>
+                <strong>Menopausal Profile:</strong><br />
+                <ul>
+                  <li>FSH</li>
+                  <li>E2 (Estradiol)</li>
+                  <li>Progesterone</li>
+                  <li>Prolactin</li>
+                  <li>AMH</li>
+                </ul>
+                <strong>Hirsutism Profile:</strong><br />
+                <ul>
+                  <li>FSH</li>
+                  <li>LH</li>
+                  <li>Prolactin</li>
+                  <li>Testosterone (Total & Free)</li>
+                  <li>DHEA-S</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 12 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">12</div>
+              <div class="faq-title">
+                مجموعة التورش لتشخيص الإجهاض المتكرر PROFILE TORCH
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Toxoplasma</li>
+                  <li>Cytomegalovirus</li>
+                  <li>Rubella</li>
+                  <li>Herpes Virus Type I</li>
+                  <li>Herpes Virus Type II</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 13 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">13</div>
+              <div class="faq-title">
+                مجموعة متابعة الحمل وما قبل الولادة PROFILE ANTENATAL
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Complete Blood Picture (CBC)</li>
+                  <li>Urine Analysis</li>
+                  <li>Fasting Blood Sugar</li>
+                  <li>2 Hour Post Prandial Blood Sugar</li>
+                  <li>Blood Group & RH</li>
+                  <li>Toxoplasma IgG & IgM</li>
+                  <li>Rubella IgG & IgM</li>
+                  <li>VDRL</li>
+                  <li>HBsAg</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 14 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">14</div>
+              <div class="faq-title">
+                مجموعة متابعة الأورام PROFILE MALIGNANCY
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <strong>Male:</strong><br />
+                <ul>
+                  <li>CBC</li>
+                  <li>ESR</li>
+                  <li>Protein Electrophoresis</li>
+                  <li>Urine Cytology</li>
+                  <li>CEA</li>
+                  <li>CA 19.9</li>
+                  <li>AFP</li>
+                  <li>PSA (Total & Free)</li>
+                </ul>
+                <strong>Female:</strong><br />
+                <ul>
+                  <li>CBC</li>
+                  <li>ESR</li>
+                  <li>Protein Electrophoresis</li>
+                  <li>Urine Cytology</li>
+                  <li>CEA</li>
+                  <li>CA 19.9</li>
+                  <li>AFP</li>
+                  <li>CA 125</li>
+                  <li>CA 15.3</li>
+                  <li>PAP Smear</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 15 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">15</div>
+              <div class="faq-title">Thyroid Profile</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>TSH</li>
+                  <li>T3</li>
+                  <li>T4</li>
+                  <li>Free T3</li>
+                  <li>Free T4</li>
+                  <li>Anti Thyroid Antibodies: Anti Thyroglobulin (A_TG)</li>
+                  <li>Anti Microsomal (A_TPo)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+          <!-- FAQ 1 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">1</div>
+              <div class="faq-title">
+                مجموعة تحاليل أمراض السكر PROFILE DIABETIC
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Fasting Blood Glucose</li>
+                  <li>2hpp Blood Glucose</li>
+                  <li>Random blood Glucose</li>
+                  <li>HbA1c (Glycated Hemoglobin)</li>
+                  <li>Microalbumin, Urine</li>
+                  <li>Insulin</li>
+                  <li>C-Peptide</li>
+                  <li>Blood Glucose Tolerance Curve</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">2</div>
+              <div class="faq-title">
+                مجموعة تحاليل الالتهاب الكبدي SCREEN HEPATITIS
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <strong>Hepatitis A Virus (HAV):</strong><br />
+                <ul>
+                  <li>HAV Antibody IgG</li>
+                  <li>HAV Antibody IgM</li>
+                </ul>
+                <strong>Hepatitis B Virus (HBV):</strong><br />
+                <ul>
+                  <li>HBs Antigen</li>
+                  <li>HBs Antibody</li>
+                  <li>HBc Antibody IgG</li>
+                  <li>HBc Antibody IgM</li>
+                  <li>HBe Antigen</li>
+                  <li>HBe Antibody</li>
+                  <li>HBV DNA by Real Time PCR</li>
+                </ul>
+                <strong>Hepatitis C Virus (HCV):</strong><br />
+                <ul>
+                  <li>HCV Antibody (3rd Generation)</li>
+                  <li>HCV RNA by Real Time PCR</li>
+                </ul>
+                <strong>Hepatitis D Virus (HDV):</strong><br />
+                <ul>
+                  <li>HDV Antibody IgG</li>
+                  <li>HDV Antibody IgM</li>
+                </ul>
+                <strong>Hepatitis E Virus (HEV):</strong><br />
+                <ul>
+                  <li>HEV Antibody</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">3</div>
+              <div class="faq-title">
+                مجموعة التحاليل الخاصة بالدهون/الشريان التاجي/تصلب الشرايين
+                LIPID PROFILE/ CORONARY RISK
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Cholesterol</li>
+                  <li>HDL Cholesterol</li>
+                  <li>LDL Cholesterol</li>
+                  <li>VLDL Cholesterol</li>
+                  <li>Triglycerides</li>
+                  <li>Apolipoprotein A</li>
+                  <li>Apolipoprotein B</li>
+                </ul>
+                <strong>Coronary Risk Ratio:</strong><br />
+                Cholesterol/HDL
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">4</div>
+              <div class="faq-title">
+                مجموعة التحاليل الخاصة بسيولة وتجلط الدم PROFILES COAGULATION
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Clotting Time (CT)</li>
+                  <li>Prothrombin Time</li>
+                  <li>Partial Thromboplastin Time (PTT)</li>
+                  <li>Platelets Count</li>
+                  <li>Fibrinogen Level</li>
+                  <li>Fibrinogen Degradation Products</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">5</div>
+              <div class="faq-title">
+                مجموعة التحاليل الخاصة بتكوين الجلطات RISK THROMBOTIC
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Platelet Count</li>
+                  <li>Prothrombin Time & Concentration (PT)</li>
+                  <li>Partial Thromboplastin Time (PTT)</li>
+                  <li>Anti Thrombin III</li>
+                  <li>Protein C</li>
+                  <li>Protein S</li>
+                  <li>Fibrinogen Level</li>
+                  <li>Fibrinogen Degradation Products (FDPs)</li>
+                  <li>Lupus Anticoagulant</li>
+                  <li>Anti Cardiolipin IgG & IgM</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">6</div>
+              <div class="faq-title">
+                تحاليل تشخيص الذئبة الحمراء SYSTEMIC LUPUS ERYTHROMATOSIS (SLE)
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>CBC</li>
+                  <li>ESR</li>
+                  <li>Rheumatoid Factor (Latex & Rose Waller)</li>
+                  <li>ANA</li>
+                  <li>Anti DNA</li>
+                  <li>Anti RNP</li>
+                  <li>Anti Ro (ss-A)</li>
+                  <li>Anti La (ss-B)</li>
+                  <li>Anti Jo-1</li>
+                  <li>Immunoglobulins</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">7</div>
+              <div class="faq-title">تشخيص تصلب الجلد SCLERODERMA</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>ANA</li>
+                  <li>Anti DNA</li>
+                  <li>Anti Scl 70</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">8</div>
+              <div class="faq-title">
+                مجموعة أمراض الكلى المناعية PANNEL AUTOIMMUNE KIDNEY
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>ANA</li>
+                  <li>Anti DNA</li>
+                  <li>ANCA</li>
+                  <li>Complement 3</li>
+                  <li>Complement 4</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">9</div>
+              <div class="faq-title">
+                مجموعة تشخيص هشاشة العظام SCREEN OSTEOPOROSIS
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Alkaline Phosphatase</li>
+                  <li>Calcium (Total & Ionized)</li>
+                  <li>Phosphorous, Inorganic</li>
+                  <li>Pyridinium Cross Link (DPD)</li>
+                  <li>Osteocalcin</li>
+                  <li>PTH</li>
+                  <li>Vit D</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 10 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">10</div>
+              <div class="faq-title">
+                فحوص ما قبل العملية INVESTIGATIONS OPERATIVE PRE
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Complete Blood Picture</li>
+                  <li>Prothrombin Time & Concentration (PT)</li>
+                  <li>Partial Thromboplastin Time (PTT)</li>
+                  <li>Random Blood Sugar</li>
+                  <li>SGOT, SGPT</li>
+                  <li>Urea, Creatinine</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 11 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">11</div>
+              <div class="faq-title">
+                مجموعة تشخيص الإجهاض المتكرر ABORTION RECURRENT
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <strong>Infectious Cause:</strong><br />
+                <ul>
+                  <li>TORCH Test</li>
+                  <li>TPHA (Treponema Pallidum Haemagglutination) Test</li>
+                </ul>
+                <strong>Immunologic Cause:</strong><br />
+                <ul>
+                  <li>ANA</li>
+                  <li>Lupus Anticoagulant</li>
+                  <li>Anti Cardiolipin IgG & IgM</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 12 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">12</div>
+              <div class="faq-title">
+                فحوص ما قبل الزواج PROFILES PREMARITAL
+              </div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <strong>Male:</strong><br />
+                <ul>
+                  <li>Semen Examination</li>
+                  <li>Fasting Blood Sugar</li>
+                  <li>Blood Group & RH</li>
+                  <li>Haemoglobin Electrophoresis</li>
+                </ul>
+                <strong>Female:</strong><br />
+                <ul>
+                  <li>Toxoplasma IgG & IgM</li>
+                  <li>Rubella IgG & IgM</li>
+                  <li>Fasting Blood Sugar</li>
+                  <li>Blood Group & RH</li>
+                  <li>Haemoglobin Electrophoresis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 13 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">13</div>
+              <div class="faq-title">دلالات الأورام TUMOR MARKERS</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Pituitary gland: ACTH, Prolactin</li>
+                  <li>Breast: CA 15-3, CA 549, CEA</li>
+                  <li>Stomach: CA 72-4, CA 19-9, CA 50</li>
+                  <li>Pancreas: CA 19-9, CA 50, CEA</li>
+                  <li>Colon-rectum: CEA, CA 19-9, CA 50</li>
+                  <li>Kidney: Erythropoietin, Renin</li>
+                  <li>Ovarian: CA 125, CA 19-9, CA 50</li>
+                  <li>Cervix / Uterus: SCC, CA 125</li>
+                  <li>Lymph system: BJ Protein – Immunofixation</li>
+                  <li>Parathyroid gland: PTH INTACT</li>
+                  <li>Neck & Head: SCC, CEA</li>
+                  <li>Thyroid: Calcitonin, Thyreoglobulin</li>
+                  <li>Oesophagus: SCC, CEA</li>
+                  <li>Lung / Bronchial: NSE, SCC, CEA</li>
+                  <li>Liver & Gall Bl.: AFP, CEA, CA 19-9, CA 50</li>
+                  <li>Bile duct: CA 19-9, CA 50, CEA</li>
+                  <li>Bladder: NMP 22</li>
+                  <li>Prostate: PSA (free, total)</li>
+                  <li>Testicular: AFP, B-HCG</li>
+                  <li>Supra renal Gland: Cortisol</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 14 -->
+          <div class="faq-item" data-reveal>
+            <div class="faq-question">
+              <div class="faq-number">14</div>
+              <div class="faq-title">Drug Profile</div>
+              <div class="faq-icon">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                <ul>
+                  <li>Cannabinoid</li>
+                  <li>Cocaine</li>
+                  <li>Barbiturates</li>
+                  <li>Benzodiazepines</li>
+                  <li>Amphetamine</li>
+                  <li>Tramadol</li>
+                  <li>Opiates</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="info-box" data-reveal>
+        <h3>تحاليل تشخيصية متقدمة</h3>
+        <p>
+          جميع الباقات متوفرة بأعلى دقة علمية. استشر طبيبك لاختيار الباقة
+          المناسبة.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div class="muted" style="margin-top: 4px; font-size: 13px">
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01557771094</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+            faqItems.forEach((other) => {
+              if (other !== item) other.classList.remove("active");
+            });
+            item.classList.toggle("active", !isActive);
+          });
+        });
+
+        const reveals = document.querySelectorAll("[data-reveal]");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        reveals.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

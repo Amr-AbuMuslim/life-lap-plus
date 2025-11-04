@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>برنامج أمومة — معامل لايف بلس</title>
+    <!-- Icons -->
+    <link rel="icon" href="assets/ICON.png" />
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/alexandria" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Section Intro */
+      .intro-text {
+        max-width: 900px;
+        margin: 0 auto 48px;
+        font-size: 16px;
+        line-height: 1.9;
+        color: var(--muted);
+        text-align: center;
+      }
+      .intro-text p {
+        margin-bottom: 16px;
+      }
+      .intro-text strong {
+        color: #071516;
+        font-weight: 700;
+      }
+
+      /* Phase Section */
+      .phase-section {
+        margin-bottom: 80px;
+      }
+      .phase-header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      .phase-header h3 {
+        font-size: 22px;
+        color: var(--turq-700);
+        font-weight: 900;
+        margin-bottom: 8px;
+      }
+      .phase-header p {
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      /* Table Style */
+      .analysis-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+      }
+      .analysis-table th {
+        background: linear-gradient(90deg, var(--turq-700), var(--turq-500));
+        color: white;
+        padding: 16px 20px;
+        text-align: center;
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .analysis-table td {
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(6, 25, 30, 0.06);
+        vertical-align: top;
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+      .analysis-table td:first-child {
+        font-weight: 700;
+        color: #071516;
+        background: #f8fdff;
+        width: 30%;
+      }
+      .analysis-table td:last-child {
+        color: var(--muted);
+      }
+      .analysis-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Cards for Special Cases */
+      .special-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      @media (min-width: 768px) {
+        .special-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .special-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(6, 25, 30, 0.06);
+        transition: all var(--transition);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .special-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(6, 25, 30, 0.12);
+      }
+      .special-card .icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--turq-100), var(--turq-200));
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        color: var(--turq-700);
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(0, 178, 201, 0.2);
+      }
+      .special-card h4 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #071516;
+        margin: 0 0 8px;
+      }
+      .special-card p {
+        font-size: 14px;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="inner wrap">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="assets/Life_Plus_lab_Logoo.png" alt="معامل لايف بلس" />
+          </div>
+          <div>
+            <div class="brand-name">معامل لايف بلس</div>
+            <div class="brand-tag">تحاليل طبية دقيقة • خدمة موثوقة</div>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">الصفحة الرئيسية</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">عن المعمل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="about.html">تعرف على المعمل</a>
+                <a href="values.html">القيم الأساسية</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link active" href="services.html">خدماتنا</a></li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">التحاليل</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="prep.html">تحضيرات التحاليل</a>
+                <a href="lists.html">قائمة التحاليل</a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button class="drop-toggle">
+                <span class="nav-link">فحوصات</span>
+                <span>▾</span>
+              </button>
+              <div class="dropdown">
+                <a href="personal-tests.html">تحاليل شخصية</a>
+                <a href="full-check.html">فحص شامل</a>
+                <a href="motherhood.html">برنامج أمومة</a>
+                <a href="baby.html">فحص حديثي الولادة</a>
+              </div>
+            </li>
+
+            <li><a class="nav-link" href="branches.html">فروعنا</a></li>
+            <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-contact">
+          <a href="tel:01557771094">
+            <i class="fa-solid fa-phone"></i>
+            <span>01557771094</span>
+          </a>
+          <a href="mailto:info@lifepluslab.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@lifepluslab.com</span>
+          </a>
+        </div>
+
+        <button class="burger" id="burger">
+          <i id="burger" class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="mobile-panel" id="mobilePanel">
+          <a href="index.html">الصفحة الرئيسية</a>
+          <div>
+            <a class="sub-toggle" data-target="m-about">عن المعمل ▾</a>
+            <div class="sub-links" id="m-about" style="display: none">
+              <a href="about.html">تعرف على المعمل</a>
+              <a href="values.html">القيم الأساسية</a>
+            </div>
+          </div>
+          <a href="services.html">خدماتنا</a>
+          <div>
+            <a class="sub-toggle" data-target="m-tests">التحاليل ▾</a>
+            <div class="sub-links" id="m-tests" style="display: none">
+              <a href="prep.html">تحضيرات التحاليل</a>
+              <a href="lists.html">قائمة التحاليل</a>
+            </div>
+          </div>
+          <div>
+            <a class="sub-toggle" data-target="m-checks">فحوصات ▾</a>
+            <div class="sub-links" id="m-checks" style="display: none">
+              <a href="personal-tests.html"> تحاليل شخصية</a>
+              <a href="full-check.html">فحص شامل</a>
+              <a href="parenet.html">برنامج أمومة</a>
+              <a href="baby.html">فحص حديثي الولادة</a>
+            </div>
+          </div>
+          <a href="branches.html">فروعنا</a>
+          <div
+            style="
+              padding: 12px;
+              margin-top: 12px;
+              border-top: 1px solid rgba(0, 0, 0, 0.08);
+            "
+          >
+            <a
+              href="tel:01557771094"
+              style="color: var(--turq-700); font-size: 13px"
+            >
+              <i class="fa-solid fa-phone"></i> 01557771094
+            </a>
+            <a
+              href="mailto:info@lifepluslab.com"
+              style="color: var(--turq-700); font-size: 13px; margin-top: 8px"
+            >
+              <i class="fa-solid fa-envelope"></i> info@lifepluslab.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="hero"
+      style="
+        background-image: linear-gradient(
+            180deg,
+            rgb(49 39 131),
+            rgba(0, 178, 201, 0.15)
+          ),
+          url('assets/pregnancy.jpg');
+      "
+    >
+      <div class="hero-inner wrap" data-reveal>
+        <div>
+          <h1 class="hero-title">برنامج أمومة</h1>
+          <p class="hero-sub">
+            رعاية شاملة لكِ ولجنينك منذ بداية الحمل وحتى ما بعد الولادة
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#program">ابدأي الآن</a>
+            <a class="btn ghost" href="contact.html">استشيري مختص</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="wrap" style="padding: 80px 0" id="program">
+      <div class="center" data-reveal>
+        <h2 class="section-title">برنامج أمومة — ضمان سلامتكِ وطفلكِ</h2>
+        <div class="intro-text">
+          <p>
+            <strong>معامل لايف بلس</strong> ترعاكِ أثناء الحمل وتطمئنكِ على
+            طفلكِ بعد الولادة من خلال برنامج أمومة شامل ودقيق.
+          </p>
+          <p>
+            يجب على كل حامل تسعى لإتمام مرحلة حملها بسلام وأمان بالنسبة لصحتها
+            وصحة جنينها، أن لا تنقطع عن زيارة الطبيب المختص بشكل دوري من أجل
+            الاطمئنان على حالتها وحال جنينها.
+          </p>
+          <p>وكذلك متابعة عمل التحاليل الخاصة بكل مرحلة من مراحل الحمل.</p>
+          <p>
+            <strong
+              >واعلمي أن هذه التحاليل لا تعني تشخيص المشكلة، ولكنها تقيّم مدى
+              هذه المشكلة.</strong
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="phase-section" data-reveal>
+        <div class="phase-header">
+          <h3>المرحلة الأولى (الشهر 1 - 3)</h3>
+          <p>الفحوصات الأساسية للكشف المبكر عن أي مخاطر</p>
+        </div>
+        <table class="analysis-table">
+          <thead>
+            <tr>
+              <th>التحليل</th>
+              <th>الفائدة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>صورة دم كاملة CBC</td>
+              <td>لمعرفة مكونات الدم والأنيميا</td>
+            </tr>
+            <tr>
+              <td>فصيلة الدم A,B,O ومعامل ريسس RH</td>
+              <td>
+                لأهمية فصيلة الدم عند الولادة، كما أن الـ RH كونها موجبة أو
+                سالبة تؤثر على الجنين الذي قد يصاب بأمراض خطيرة في الدم قد تسبب
+                الوفاة
+              </td>
+            </tr>
+            <tr>
+              <td>السكر في الدم</td>
+              <td>للتأكد من خلوك من مرض السكر لأنه يؤثر على الجنين</td>
+            </tr>
+            <tr>
+              <td>هرمونات الغدة الدرقية FT3, FT4, TSH</td>
+              <td>
+                للتعرف على مستوى الهرمونات في الدم حيث أنها قد تؤثر على نمو
+                الجنين
+              </td>
+            </tr>
+            <tr>
+              <td>تحليل ومزرعة البول</td>
+              <td>
+                للتأكد من سلامة المجرى البولي والكشف عن وجود أي عدوى تسبب التهاب
+                المسالك البولية نتيجة لنمو الرحم
+              </td>
+            </tr>
+            <tr>
+              <td>الاضطرابات الصبغية والكروموسومية (PPAP-A, Free BHCG)</td>
+              <td>
+                للكشف عن متلازمة داون للأمهات فوق سن 35 عام. تتم هذه التحاليل
+                بين الأسبوع 11-14 من الحمل للتأكد من خلو الطفل من أي خلل في
+                الكروموسومات
+              </td>
+            </tr>
+            <tr>
+              <td>روبيلا</td>
+              <td>للكشف عن الإصابة بالحصبة الألمانية</td>
+            </tr>
+            <tr>
+              <td>توكسوبلازما</td>
+              <td>
+                للكشف عن مرض ناتج من طفيل في فضلات الحيوانات المصابة كالقطط مما
+                يؤدي إلى تشوهات في الجنين
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase-section" data-reveal>
+        <div class="phase-header">
+          <h3>المرحلة الثانية (الشهر 4 - 6)</h3>
+          <p>متابعة نمو الجنين وكشف العيوب الخلقية</p>
+        </div>
+        <table class="analysis-table">
+          <thead>
+            <tr>
+              <th>التحليل</th>
+              <th>الفائدة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>صورة دم كاملة CBC</td>
+              <td>لمعرفة مكونات الدم والأنيميا</td>
+            </tr>
+            <tr>
+              <td>منحنى السكر في الدم</td>
+              <td>لكشف حالات ظهور سكر الحمل</td>
+            </tr>
+            <tr>
+              <td>تحليل ومزرعة البول</td>
+              <td>
+                للتأكد من سلامة المجرى البولي والكشف عن وجود أي عدوى تسبب التهاب
+                المسالك البولية نتيجة لنمو الرحم
+              </td>
+            </tr>
+            <tr>
+              <td>الاضطرابات الصبغية والكروموسومية (BHCG, unconj, E3)</td>
+              <td>
+                للكشف عن متلازمة داون للأمهات فوق سن 35 عام. تتم هذه التحاليل
+                بين الأسبوع 15-20 من الحمل للتأكد من خلو الطفل من أي عيوب خلقية
+                في الخلايا العصبية وأي خلل في الكروموسومات
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase-section" data-reveal>
+        <div class="phase-header">
+          <h3>المرحلة الثالثة (الشهر 7 - 9)</h3>
+          <p>الاستعداد للولادة الآمنة</p>
+        </div>
+        <table class="analysis-table">
+          <thead>
+            <tr>
+              <th>التحليل</th>
+              <th>الفائدة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>صورة دم كاملة CBC</td>
+              <td>لمعرفة مكونات الدم والأنيميا</td>
+            </tr>
+            <tr>
+              <td>منحنى السكر في الدم</td>
+              <td>لكشف حالات ظهور سكر الحمل</td>
+            </tr>
+            <tr>
+              <td>مسحة لأخذ عينة من المهبل للفحص</td>
+              <td>
+                عمل مزرعة للكشف عن أي خلايا ميكروبية قد تسبب العدوى للطفل أثناء
+                الولادة
+              </td>
+            </tr>
+            <tr>
+              <td>Coagulation profile - تحليل قياس نسبة التجلط</td>
+              <td>في حالة الولادة القيصرية</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Special Cases -->
+      <div class="center" data-reveal>
+        <h2 class="section-title">تحاليل في ظروف خاصة</h2>
+        <p
+          style="
+            max-width: 800px;
+            margin: 0 auto 32px;
+            font-size: 15px;
+            color: var(--muted);
+          "
+        >
+          تُجرى هذه التحاليل في حالات الشك بوجود مرض وراثي أو وجود شيء غير عادي
+        </p>
+      </div>
+
+      <div class="special-cards wrap" data-reveal>
+        <div class="special-card">
+          <div class="icon"><i class="fa-solid fa-dna"></i></div>
+          <div>
+            <h4>الاضطرابات الصبغية والكروموسومية</h4>
+            <p>
+              للكشف عن متلازمة داون أو عيوب خلقية (PPAP-A, Free BHCG, BHCG, E3)
+            </p>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="icon"><i class="fa-solid fa-baby"></i></div>
+          <div>
+            <h4>التوكسوبلازما</h4>
+            <p>للكشف عن طفيليات من فضلات الحيوانات قد تسبب تشوهات للجنين</p>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="icon"><i class="fa-solid fa-virus"></i></div>
+          <div>
+            <h4>الروبيلا (الحصبة الألمانية)</h4>
+            <p>لمنع الإصابة التي قد تؤدي إلى تشوهات خلقية</p>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="icon"><i class="fa-solid fa-heart-circle-check"></i></div>
+          <div>
+            <h4>فصيلة الدم ومعامل RH</h4>
+            <p>للحفاظ على سلامة الجنين من أمراض الدم الخطيرة</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-reveal>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 900; font-size: 16px">
+            © 2025 معامل لايف بلس
+          </div>
+          <div class="muted" style="margin-top: 4px; font-size: 13px">
+            جميع الحقوق محفوظة
+          </div>
+        </div>
+        <div style="text-align: left">
+          <div style="font-size: 14px; font-weight: 600">01557771094</div>
+          <div style="opacity: 0.9; font-size: 13px; margin-top: 4px">
+            info@lifepluslab.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- toTop -->
+    <button id="toTop" title="الرجوع للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+  </body>
+</html>

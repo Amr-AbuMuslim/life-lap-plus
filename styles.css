@@ -1,7 +1,7 @@
 /* ========== VARIABLES ========== */
 :root {
-  --font-main: "Alexandria", "Cairo", system-ui, -apple-system, "Segoe UI",
-    Roboto, Arial, sans-serif;
+  --font-main: "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
   --turq-900: #312783;
   --turq-700: #312783;
   --turq-500: #e30613;
@@ -42,7 +42,7 @@ img {
 }
 .wrap {
   width: 92%;
-  max-width: 1200px;
+  max-width: 1337px;
   margin-inline: auto;
 }
 
@@ -127,16 +127,17 @@ img {
 /* Contact Info in Header */
 .header-contact {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   align-items: center;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--turq-700);
 }
 .header-contact a {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-weight: 600;
+  font-weight: 900;
   transition: color var(--transition);
 }
 .header-contact a:hover {
@@ -161,7 +162,8 @@ ul.nav-list {
   display: inline-block;
   padding: 8px 6px;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
+
   color: #072426;
   position: relative;
   transition: color var(--transition);
@@ -308,7 +310,7 @@ ul.nav-list {
       rgb(49 39 131),
       rgba(0, 178, 201, 0.15)
     ),
-    url("https://images.unsplash.com/photo-1602052577122-f73b9710adba?auto=format&fit=crop&q=80&w=1400");
+    url("assets/laboratory-8895976_1280.png");
   background-size: cover;
   background-position: center;
   text-align: right;
@@ -486,11 +488,16 @@ ul.nav-list {
   box-shadow: 0 12px 32px rgba(6, 25, 30, 0.12);
 }
 .stat-thumb {
-  width: 68px;
-  height: 68px;
+  font-size: 37px;
+  color: white;
+  left: 20px;
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
   border-radius: 12px;
-  overflow: hidden;
-  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--turq-700), var(--turq-500));
 }
 .stat-thumb img {
   width: 100%;
@@ -498,13 +505,13 @@ ul.nav-list {
   object-fit: cover;
 }
 .stat-number {
-  font-size: 24px;
+  font-size: 34px;
   color: var(--turq-700);
   font-weight: 900;
 }
 .stat-title {
   font-weight: 800;
-  font-size: 14px;
+  font-size: 19px;
   color: #071516;
 }
 .stat-desc {
@@ -621,7 +628,7 @@ ul.nav-list {
   text-align: center;
 }
 .message-text {
-  color: white;
+  color: var(--muted);
   line-height: 1.7;
   max-width: 700px;
   margin: 12px auto 0;
